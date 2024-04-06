@@ -2,5 +2,65 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    #region SerializeFields
+    [Header("Components")]
+    [SerializeField] private Inputs _inputs;
+    [SerializeField] private Collider2D _collider;
+    [SerializeField] private Rigidbody2D _rigidbody2D;
+    [SerializeField] private CharacterAnimator _characterAnimator;
+    [Header("Data")]
+    [SerializeField] private PlayerData _playerData;
+    #endregion
 
+    #region States
+    public InAirState InAirState { get; private set; }
+    public IdleState IdleState { get; private set; }
+    public MoveState MoveState { get; private set; }
+    public LandState LandState { get; private set; }
+    #endregion
+
+    #region Private Fields
+    private Checker _checker;
+
+    private PlayerStateMachine _stateMachine;
+    #endregion
+
+    #region Getters
+    public Inputs Inputs => _inputs;
+    public Rigidbody2D Rigidbody2D => _rigidbody2D;
+    public Checker Checker => _checker;
+    public CharacterAnimator Animator => _characterAnimator;
+    #endregion
+
+    private void Awake()
+    {
+        _checker = new Checker(_collider, _playerData.GroundCheckData);
+        _stateMachine = new PlayerStateMachine(this);
+
+        InAirState = new InAirState(_stateMachine,
+                                    _playerData.AirStateData,
+                                    _playerData.CharacterAnimationsData.InAirAnimationParameter);
+        IdleState = new IdleState(_stateMachine,
+                                  _playerData.CharacterAnimationsData.IdleAnimationParameter);
+        MoveState = new MoveState(_stateMachine,
+                                  _playerData.MoveStateData,
+                                  _playerData.CharacterAnimationsData.MoveAnimationParameter);
+        LandState = new LandState(_stateMachine,
+                                  _playerData.CharacterAnimationsData.LandAnimationParameter);
+    }
+
+    private void OnEnable()
+    {
+        _stateMachine.Start(IdleState);
+    }
+
+    private void Update()
+    {
+        _stateMachine.Update();
+    }
+
+    private void FixedUpdate()
+    {
+        _stateMachine.FixedUpdate();
+    }
 }
