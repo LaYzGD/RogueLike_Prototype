@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12673a16f101334d86113c367f01b77, type: 3}
   m_Name: GroundCheckData
   m_EditorClassIdentifier: 
+  <VerticalVelocityTreshold>k__BackingField: 0.01
   <CheckAngle>k__BackingField: 0
   <CheckDistance>k__BackingField: 0.6
   <CheckDirection>k__BackingField: {x: 0, y: -1}

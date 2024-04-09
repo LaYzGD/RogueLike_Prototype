@@ -4,10 +4,12 @@ public class Checker
 {
     private Collider2D _origin;
     private GroundCheckData _groundCheckData;
-    public Checker(Collider2D origin, GroundCheckData data)
+    private Rigidbody2D _rigidbody2D;
+    public Checker(Collider2D origin, GroundCheckData data, Rigidbody2D rigidbody2D)
     {
         _origin = origin;
         _groundCheckData = data;
+        _rigidbody2D = rigidbody2D;
     }
 
     public bool IsGrounded()
@@ -17,6 +19,6 @@ public class Checker
                                  _groundCheckData.CheckAngle,
                                  _groundCheckData.CheckDirection,
                                  _groundCheckData.CheckDistance,
-                                 _groundCheckData.GroundLayer.value);
+                                 _groundCheckData.GroundLayer.value) && _rigidbody2D.velocity.y < _groundCheckData.VerticalVelocityTreshold;
     }
 }

@@ -6,18 +6,17 @@ public class InAirState : State
     private bool _isGrounded;
     private Rigidbody2D _rigidBody2D;
     private AirStateData _data;
+    private MoveStateData _moveData;
     private string _animationParameter;
-    private float _maxJumpHeight;
     private bool _isJump;
-    private bool _isFalling;
 
-    public InAirState(PlayerStateMachine stateMachine, AirStateData data, string animationParameter) : base(stateMachine)
+    public InAirState(PlayerStateMachine stateMachine, AirStateData data, MoveStateData moveData, string animationParameter) : base(stateMachine)
     {
         _checker = Player.Checker;
         _rigidBody2D = Player.Rigidbody2D;
         _data = data;
         _animationParameter = animationParameter;
-        _maxJumpHeight = data.MaxJumpHeight;
+        _moveData = moveData;
     }
 
     public override void Enter()
@@ -25,12 +24,6 @@ public class InAirState : State
         base.Enter();
         DoChecks();
         PlayerAnimator.ChangeAnimationState(_animationParameter, true);
-        if (StateMachine.PreviousState == Player.JumpState)
-        {
-            _isJump = true;
-            Debug.Log(_isJump);
-        }
-        _isFalling = false;
     }
 
     public override void DoChecks()
@@ -42,38 +35,45 @@ public class InAirState : State
     {
         DoChecks();
 
-        if (_isGrounded)
+        if (!_isGrounded)
         {
-            StateMachine.ChangeState(Player.LandState);
+            return;
         }
+
+        if (PlayerInputs.HorizontalMovementDirection != 0)
+        {
+            StateMachine.ChangeState(Player.MoveState);
+            return;
+        }
+
+        StateMachine.ChangeState(Player.LandState);
     }
 
     public override void FixedUpdate()
     {
         float yVelocity = _rigidBody2D.velocity.y;
-        float xVelocity = PlayerInputs.HorizontalMovementDirection * _data.HorizontalSpeed;
+        float xVelocity = PlayerInputs.HorizontalMovementDirection * _moveData.MovementSpeed;
 
-        if (!_isFalling)
+        if (_isJump)
         {
-            if (_isJump && _rigidBody2D.velocity.y <= _maxJumpHeight)
-            {
-                _isFalling = true;
-                return;
-            }
-
-            if (_rigidBody2D.velocity.y < 0)
-            {
-                _isFalling = true;
-            }
+            yVelocity -= _data.JumpDownwardVelocity;
+            xVelocity = PlayerInputs.HorizontalMovementDirection * _data.JumpHorizontalSpeed;
         }
 
-        if (_isFalling)
+        if (_rigidBody2D.velocity.y < 0)
         {
+            _isJump = false;
             yVelocity -= _data.FallVelocity;
+            if (yVelocity < _data.MaxFallVelocity * -1)
+            {
+                yVelocity = _data.MaxFallVelocity * -1;
+            }
         }
 
         _rigidBody2D.velocity = new Vector2(xVelocity, yVelocity);
     }
+
+    public void SetIsJumping() => _isJump = true;
 
     public override void Exit()
     {

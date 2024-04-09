@@ -3,34 +3,32 @@ using UnityEngine;
 public abstract class AbilityState : State
 {
     private bool _isAbilityDone;
-    private bool _isUnlocked;
     private Rigidbody2D _rigidbody2D;
     protected bool IsAbilityDone { get => _isAbilityDone; set => _isAbilityDone = value; }
     protected Rigidbody2D Rigidbody => _rigidbody2D;
-    public AbilityState(PlayerStateMachine stateMachine, bool isUnlockedByDefault) : base(stateMachine)
+    public AbilityState(PlayerStateMachine stateMachine) : base(stateMachine)
     {
-        _isUnlocked = isUnlockedByDefault;
         _rigidbody2D = Player.Rigidbody2D;
     }
 
     public override void Enter()
     {
-        if (!_isUnlocked)
-        {
-            GoToPreviousState();
-            return;
-        }
         base.Enter();
         _isAbilityDone = false;
     }
 
-    public virtual void GoToPreviousState() 
+    public override void Update()
     {
-        StateMachine.GoToPreviousState();
-    }
+        base.Update();
+        if (_isAbilityDone)
+        {
+            if (Player.Checker.IsGrounded()) 
+            {
+                StateMachine.ChangeState(Player.IdleState);
+                return;
+            }
 
-    public void UnlockAbility()
-    {
-        _isUnlocked = true;
+            StateMachine.ChangeState(Player.InAirState);
+        }
     }
 }

@@ -37,11 +37,12 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _checker = new Checker(_collider, _playerData.GroundCheckData);
+        _checker = new Checker(_collider, _playerData.GroundCheckData, _rigidbody2D);
         _stateMachine = new PlayerStateMachine(this);
 
         InAirState = new InAirState(_stateMachine,
                                     _playerData.AirStateData,
+                                    _playerData.MoveStateData,
                                     _playerData.CharacterAnimationsData.InAirAnimationParameter);
         IdleState = new IdleState(_stateMachine,
                                   _playerData.CharacterAnimationsData.IdleAnimationParameter);
@@ -50,10 +51,7 @@ public class Player : MonoBehaviour
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine,
                                   _playerData.CharacterAnimationsData.LandAnimationParameter);
-        JumpState = new JumpState(_stateMachine,
-                                  true,
-                                  _playerData.JumpStateData,
-                                  _playerData.CharacterAnimationsData.JumpAnimationParameter);
+        JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
     }
 
     private void OnEnable()
