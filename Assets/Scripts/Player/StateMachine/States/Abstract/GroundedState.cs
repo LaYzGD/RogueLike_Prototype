@@ -35,6 +35,11 @@ public abstract class GroundedState : State
             StateMachine.ChangeState(Player.JumpState);
         }
 
+        if (PlayerInputs.IsHookInput)
+        {
+            StateMachine.ChangeState(Player.HookLaunchState);
+        }
+
         if (!_isGrounded)
         {
             StateMachine.ChangeState(Player.InAirState);

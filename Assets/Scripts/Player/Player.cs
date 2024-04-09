@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Collider2D _collider;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private CharacterAnimator _characterAnimator;
+    [SerializeField] private Hook _hook;
     [Header("Data")]
     [SerializeField] private PlayerData _playerData;
     [Header("Variables")]
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
     public MoveState MoveState { get; private set; }
     public LandState LandState { get; private set; }
     public JumpState JumpState { get; private set; }
+    public HookLaunchState HookLaunchState { get; private set; }
     #endregion
 
     #region Private Fields
@@ -52,6 +54,7 @@ public class Player : MonoBehaviour
         LandState = new LandState(_stateMachine,
                                   _playerData.CharacterAnimationsData.LandAnimationParameter);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
+        HookLaunchState = new HookLaunchState(_stateMachine, _hook);
     }
 
     private void OnEnable()

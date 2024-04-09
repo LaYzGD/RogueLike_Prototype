@@ -7,7 +7,7 @@ public class Inputs : MonoBehaviour
     public int VerticalAimDirection { get; private set; }
     public int HorizontalMovementDirection { get; private set; }
     public bool IsJump { get; private set; }
-    public bool IsAbility { get; private set; }
+    public bool IsHookInput { get; private set; }
 
     private float _jumpStartTime;
 
@@ -37,16 +37,21 @@ public class Inputs : MonoBehaviour
         if (context.performed)
         {
             IsJump = true;
+            _jumpStartTime = Time.time;
         }
     }
 
-    public void OnAbilityInput(InputAction.CallbackContext context)
+    public void OnHookInput(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            IsAbility = true;
-            _jumpStartTime = Time.time;
+            IsHookInput = true;
         }
+    }
+
+    public void UseHookInput()
+    {
+        IsHookInput = false;
     }
 
     public void UseJumpInput()
