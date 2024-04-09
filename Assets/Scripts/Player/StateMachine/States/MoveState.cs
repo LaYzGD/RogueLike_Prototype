@@ -19,9 +19,14 @@ public class MoveState : GroundedState
     public override void Update()
     {
         base.Update();
-        if (Rigidbody2D.velocity == Vector2.zero)
+        if (Rigidbody2D.velocity == Vector2.zero && PlayerInputs.HorizontalMovementDirection == 0)
         {
             StateMachine.ChangeState(Player.IdleState);
+        }
+
+        if (PlayerInputs.HorizontalMovementDirection != Player.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
+        {
+            Player.Flip();
         }
     }
 

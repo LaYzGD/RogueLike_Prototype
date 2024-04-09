@@ -29,6 +29,12 @@ public abstract class GroundedState : State
     {
         DoChecks();
 
+        if (PlayerInputs.IsJump)
+        {
+            PlayerInputs.UseJumpInput();
+            StateMachine.ChangeState(Player.JumpState);
+        }
+
         if (!_isGrounded)
         {
             StateMachine.ChangeState(Player.InAirState);

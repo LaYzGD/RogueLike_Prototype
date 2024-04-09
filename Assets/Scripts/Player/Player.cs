@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private CharacterAnimator _characterAnimator;
     [Header("Data")]
     [SerializeField] private PlayerData _playerData;
+    [Header("Variables")]
+    [SerializeField] private int _facingDirection = 1;
     #endregion
 
     #region States
@@ -17,11 +19,11 @@ public class Player : MonoBehaviour
     public IdleState IdleState { get; private set; }
     public MoveState MoveState { get; private set; }
     public LandState LandState { get; private set; }
+    public JumpState JumpState { get; private set; }
     #endregion
 
     #region Private Fields
     private Checker _checker;
-
     private PlayerStateMachine _stateMachine;
     #endregion
 
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public Checker Checker => _checker;
     public CharacterAnimator Animator => _characterAnimator;
+    public int FacingDirection => _facingDirection;
     #endregion
 
     private void Awake()
@@ -47,6 +50,10 @@ public class Player : MonoBehaviour
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine,
                                   _playerData.CharacterAnimationsData.LandAnimationParameter);
+        JumpState = new JumpState(_stateMachine,
+                                  true,
+                                  _playerData.JumpStateData,
+                                  _playerData.CharacterAnimationsData.JumpAnimationParameter);
     }
 
     private void OnEnable()
@@ -62,5 +69,11 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _stateMachine.FixedUpdate();
+    }
+
+    public void Flip()
+    {
+        transform.Rotate(0f, 180f, 0f);
+        _facingDirection *= -1;
     }
 }
