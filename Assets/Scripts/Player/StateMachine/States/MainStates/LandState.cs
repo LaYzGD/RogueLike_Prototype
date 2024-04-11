@@ -11,7 +11,6 @@ public class LandState : GroundedState
     public override void Enter()
     {
         base.Enter();
-        Rigidbody2D.velocity = Vector2.zero;
         PlayerAnimator.OnAnimationCompleted += ChangeState;
         PlayerAnimator.ChangeAnimationState(_animationParameter);
     }

@@ -45,7 +45,8 @@ public class Player : MonoBehaviour
         InAirState = new InAirState(_stateMachine,
                                     _playerData.AirStateData,
                                     _playerData.MoveStateData,
-                                    _playerData.CharacterAnimationsData.InAirAnimationParameter);
+                                    _playerData.CharacterAnimationsData.InAirAnimationParameter,
+                                    _playerData.CharacterAnimationsData.FallAnimationParameter);
         IdleState = new IdleState(_stateMachine,
                                   _playerData.CharacterAnimationsData.IdleAnimationParameter);
         MoveState = new MoveState(_stateMachine,

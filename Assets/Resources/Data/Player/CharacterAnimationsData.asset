@@ -15,5 +15,6 @@ MonoBehaviour:
   <IdleAnimationParameter>k__BackingField: isIdle
   <MoveAnimationParameter>k__BackingField: isMove
   <InAirAnimationParameter>k__BackingField: inAir
+  <FallAnimationParameter>k__BackingField: Fall
   <LandAnimationParameter>k__BackingField: Land
   <JumpAnimationParameter>k__BackingField: isJump

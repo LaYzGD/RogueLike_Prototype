@@ -8,20 +8,24 @@ public class InAirState : State
     private AirStateData _data;
     private MoveStateData _moveData;
     private string _animationParameter;
+    private string _fallAnimationParameter;
     private bool _isJump;
+    private bool _isFallingStarted;
 
-    public InAirState(PlayerStateMachine stateMachine, AirStateData data, MoveStateData moveData, string animationParameter) : base(stateMachine)
+    public InAirState(PlayerStateMachine stateMachine, AirStateData data, MoveStateData moveData, string animationParameter, string fallAnimation) : base(stateMachine)
     {
         _checker = Player.Checker;
         _rigidBody2D = Player.Rigidbody2D;
         _data = data;
         _animationParameter = animationParameter;
+        _fallAnimationParameter = fallAnimation;
         _moveData = moveData;
     }
 
     public override void Enter()
     {
         base.Enter();
+        _isFallingStarted = false;
         DoChecks();
         PlayerAnimator.ChangeAnimationState(_animationParameter, true);
     }
@@ -35,6 +39,22 @@ public class InAirState : State
     {
         DoChecks();
 
+        if (_rigidBody2D.velocity.y < -_data.FallVelocityTreshold)
+        {
+            _isFallingStarted = true;
+        }
+
+        if (_isFallingStarted)
+        {
+            PlayerAnimator.ChangeAnimationState(_animationParameter, false);
+            PlayerAnimator.ChangeAnimationState(_fallAnimationParameter, true);
+        }
+
+        if (PlayerInputs.HorizontalMovementDirection != Player.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
+        {
+            Player.Flip();
+        }
+
         if (!_isGrounded)
         {
             return;
@@ -45,6 +65,7 @@ public class InAirState : State
             StateMachine.ChangeState(Player.MoveState);
             return;
         }
+
 
         StateMachine.ChangeState(Player.LandState);
     }
@@ -78,6 +99,8 @@ public class InAirState : State
     public override void Exit()
     {
         _isJump = false;
+        _isFallingStarted = false;
         PlayerAnimator.ChangeAnimationState(_animationParameter, false);
+        PlayerAnimator.ChangeAnimationState(_fallAnimationParameter, false);
     }
 }
