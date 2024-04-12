@@ -40,9 +40,32 @@ public abstract class GroundedState : State
             StateMachine.ChangeState(Player.HookLaunchState);
         }
 
+        if (PlayerInputs.AttackInput && PlayerInputs.VerticalAimDirection == -1)
+        {
+            StateMachine.ChangeState(Player.DownAttack);
+        }
+
+        if (PlayerInputs.AttackInput && PlayerInputs.HorizontalMovementDirection != 0)
+        {
+            StateMachine.ChangeState(Player.ForwardAttack);
+        }
+
+
+        if (PlayerInputs.AttackInput)
+        {
+            StateMachine.ChangeState(Player.NeutralAttack);
+        }
+
         if (!_isGrounded)
         {
             StateMachine.ChangeState(Player.InAirState);
         }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        PlayerInputs.UseAttackInput();
+        PlayerInputs.UseHookInput();
     }
 }

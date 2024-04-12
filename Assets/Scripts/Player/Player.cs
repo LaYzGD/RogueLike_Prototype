@@ -22,6 +22,12 @@ public class Player : MonoBehaviour
     public LandState LandState { get; private set; }
     public JumpState JumpState { get; private set; }
     public HookLaunchState HookLaunchState { get; private set; }
+    #region Attacks
+    public AttackForwardState ForwardAttack { get; private set; }
+    public AttackDownState DownAttack { get; private set; }
+    public AttackNeutralState NeutralAttack { get; private set; }
+    public AirAttackState AirAttack { get; private set; }
+    #endregion
     #endregion
 
     #region Private Fields
@@ -56,6 +62,10 @@ public class Player : MonoBehaviour
                                   _playerData.CharacterAnimationsData.LandAnimationParameter);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
         HookLaunchState = new HookLaunchState(_stateMachine, _hook);
+        ForwardAttack = new AttackForwardState(_stateMachine, _playerData.AttackForwardData, _playerData.CharacterAnimationsData.AttackForward);
+        DownAttack = new AttackDownState(_stateMachine, _playerData.AttacDownData, _playerData.CharacterAnimationsData.AttackDown);
+        NeutralAttack = new AttackNeutralState(_stateMachine, _playerData.CharacterAnimationsData.AttackNeutral);
+        AirAttack = new AirAttackState(_stateMachine, _playerData.CharacterAnimationsData.AirAttack);
     }
 
     private void OnEnable()

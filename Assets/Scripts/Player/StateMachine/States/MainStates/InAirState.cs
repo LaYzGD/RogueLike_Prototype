@@ -55,6 +55,11 @@ public class InAirState : State
             Player.Flip();
         }
 
+        if (PlayerInputs.AttackInput)
+        {
+            StateMachine.ChangeState(Player.AirAttack);
+        }
+
         if (!_isGrounded)
         {
             return;
@@ -100,6 +105,7 @@ public class InAirState : State
     {
         _isJump = false;
         _isFallingStarted = false;
+        PlayerInputs.UseAttackInput();
         PlayerAnimator.ChangeAnimationState(_animationParameter, false);
         PlayerAnimator.ChangeAnimationState(_fallAnimationParameter, false);
     }
