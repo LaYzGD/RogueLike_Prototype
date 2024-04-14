@@ -13,5 +13,11 @@ public class AttackDownState : AttackState
         Rigidbody2D.velocity = Vector2.zero;
     }
 
+    protected override void EnableHitbox()
+    {
+        base.EnableHitbox();
+        Rigidbody2D.velocity = new Vector2(_data.MovementSpeed * Player.FacingDirection, 0f);
+    }
+
 
 }

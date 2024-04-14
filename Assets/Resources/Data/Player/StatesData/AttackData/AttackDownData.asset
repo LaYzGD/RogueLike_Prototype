@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Damage>k__BackingField: 1
   <StunTime>k__BackingField: 1
+  <MovementSpeed>k__BackingField: 6

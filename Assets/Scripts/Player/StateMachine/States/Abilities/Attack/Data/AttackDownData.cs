@@ -5,4 +5,5 @@ public class AttackDownData : ScriptableObject
 {
     [field: SerializeField] public int Damage { get; private set; }
     [field: SerializeField] public float StunTime { get; private set; }
+    [field: SerializeField] public float MovementSpeed { get; private set; }
 }
