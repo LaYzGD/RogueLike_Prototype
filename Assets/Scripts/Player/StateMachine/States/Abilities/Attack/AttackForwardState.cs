@@ -10,6 +10,12 @@ public class AttackForwardState : AttackState
 
     protected override void ChangeRigidbodyBehaviour()
     {
+        Rigidbody2D.velocity = Vector2.zero;
+    }
+
+    protected override void EnableHitbox()
+    {
+        base.EnableHitbox();
         Rigidbody2D.velocity = new Vector2(_data.ForwardMovement * Player.FacingDirection, 0f);
     }
 

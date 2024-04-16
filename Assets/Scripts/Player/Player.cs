@@ -51,15 +51,13 @@ public class Player : MonoBehaviour
         InAirState = new InAirState(_stateMachine,
                                     _playerData.AirStateData,
                                     _playerData.MoveStateData,
-                                    _playerData.CharacterAnimationsData.InAirAnimationParameter,
-                                    _playerData.CharacterAnimationsData.FallAnimationParameter);
+                                    _playerData.CharacterAnimationsData.InAirAnimationParameter);
         IdleState = new IdleState(_stateMachine,
                                   _playerData.CharacterAnimationsData.IdleAnimationParameter);
         MoveState = new MoveState(_stateMachine,
                                   _playerData.MoveStateData,
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
-        LandState = new LandState(_stateMachine,
-                                  _playerData.CharacterAnimationsData.LandAnimationParameter);
+        LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
         HookLaunchState = new HookLaunchState(_stateMachine, _hook);
         ForwardAttack = new AttackForwardState(_stateMachine, _playerData.AttackForwardData, _playerData.CharacterAnimationsData.AttackForward);

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 17706206749b3914ea19d2a2a12ed2c6
+guid: 9440d8fccce366f458cf5d2fd34718f9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Spear
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 21
+        width: 54
+        height: 425
+      alignment: 9
+      pivot: {x: 0.47758442, y: 0.453008}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8aac5bd90c358a48938c78e13ee07e7
+      internalID: 1848432154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 62
+        width: 67
+        height: 260
+      alignment: 9
+      pivot: {x: 0.54516536, y: 0.087998085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4849ac0624f2ffc47acf00112b588cf6
+      internalID: 169863479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GreatSword
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 56
+        width: 86
+        height: 430
+      alignment: 9
+      pivot: {x: 0.5422236, y: 0.1509539}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea066d6806f5b544a57a56d30ad5ca3
+      internalID: -1127662058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +208,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      GreatSword: -1127662058
+      Spear: 1848432154
+      Sword: 169863479
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

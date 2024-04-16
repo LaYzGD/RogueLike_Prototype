@@ -7,5 +7,4 @@ public class AirStateData : ScriptableObject
     [field: SerializeField] public float FallVelocity { get; private set; }
     [field: SerializeField] public float JumpDownwardVelocity { get; private set; }
     [field: SerializeField] public float JumpHorizontalSpeed { get; private set; }
-    [field: SerializeField] public float FallVelocityTreshold { get; private set; }
 }

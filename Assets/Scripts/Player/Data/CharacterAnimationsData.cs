@@ -6,8 +6,6 @@ public class CharacterAnimationsData : ScriptableObject
     [field: SerializeField] public string IdleAnimationParameter { get; private set; }
     [field: SerializeField] public string MoveAnimationParameter { get; private set; }
     [field: SerializeField] public string InAirAnimationParameter { get; private set; }
-    [field: SerializeField] public string FallAnimationParameter { get; private set; }
-    [field: SerializeField] public string LandAnimationParameter { get; private set; }
     [field: SerializeField] public string JumpAnimationParameter { get; private set; }
     [field: SerializeField] public string AirAttack { get; private set; }
     [field: SerializeField] public string AttackForward { get; private set; }
