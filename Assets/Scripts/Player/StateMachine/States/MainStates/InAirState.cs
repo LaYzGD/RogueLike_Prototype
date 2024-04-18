@@ -9,6 +9,7 @@ public class InAirState : State
     private MoveStateData _moveData;
     private string _animationParameter;
     private bool _isJump;
+    private bool _isTargetFound;
 
     public InAirState(PlayerStateMachine stateMachine, AirStateData data, MoveStateData moveData, string animationParameter) : base(stateMachine)
     {
@@ -29,28 +30,31 @@ public class InAirState : State
     public override void DoChecks()
     {
         _isGrounded = _checker.IsGrounded();
+        _isTargetFound = Player.Combat.TargetDetection.IsTargetDetected();
     }
 
     public override void Update()
     {
         DoChecks();
 
+        if (_isGrounded)
+        {
+            StateMachine.ChangeState(Player.LandState);
+        }
+
+        if (Player.Combat.IsLocked)
+        {
+            if ((Player.transform.position.x - Player.Combat.TargetPosition.x) / Player.FacingDirection > 0 && Player.Combat.CanFlip)
+            {
+                Player.Flip();
+            }
+            return;
+        }
+
         if (PlayerInputs.HorizontalMovementDirection != Player.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
         {
             Player.Flip();
         }
-
-        if (PlayerInputs.AttackInput)
-        {
-            StateMachine.ChangeState(Player.AirAttack);
-        }
-
-        if (!_isGrounded)
-        {
-            return;
-        }
-
-        StateMachine.ChangeState(Player.LandState);
     }
 
     public override void FixedUpdate()
@@ -82,7 +86,6 @@ public class InAirState : State
     public override void Exit()
     {
         _isJump = false;
-        PlayerInputs.UseAttackInput();
         PlayerAnimator.ChangeAnimationState(_animationParameter, false);
 
     }

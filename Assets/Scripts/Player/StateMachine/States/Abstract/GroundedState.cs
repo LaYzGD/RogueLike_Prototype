@@ -6,6 +6,10 @@ public abstract class GroundedState : State
     private bool _isGrounded;
     private Rigidbody2D _rigidbody2D;
 
+    private bool _isTargetFound;
+
+    protected bool IsTargetFound => _isTargetFound;
+
     protected Rigidbody2D Rigidbody2D => _rigidbody2D;
 
     public GroundedState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -17,6 +21,7 @@ public abstract class GroundedState : State
     public override void DoChecks()
     {
         _isGrounded = _checker.IsGrounded();
+        _isTargetFound = Player.Combat.TargetDetection.IsTargetDetected();
     }
 
     public override void Enter()
@@ -35,26 +40,6 @@ public abstract class GroundedState : State
             StateMachine.ChangeState(Player.JumpState);
         }
 
-        if (PlayerInputs.IsHookInput)
-        {
-            StateMachine.ChangeState(Player.HookLaunchState);
-        }
-
-        if (PlayerInputs.AttackInput && PlayerInputs.VerticalAimDirection == -1)
-        {
-            StateMachine.ChangeState(Player.DownAttack);
-        }
-
-        if (PlayerInputs.AttackInput && PlayerInputs.HorizontalMovementDirection != 0)
-        {
-            StateMachine.ChangeState(Player.ForwardAttack);
-        }
-
-
-        if (PlayerInputs.AttackInput)
-        {
-            StateMachine.ChangeState(Player.NeutralAttack);
-        }
 
         if (!_isGrounded)
         {
@@ -65,7 +50,5 @@ public abstract class GroundedState : State
     public override void Exit()
     {
         base.Exit();
-        PlayerInputs.UseAttackInput();
-        PlayerInputs.UseHookInput();
     }
 }

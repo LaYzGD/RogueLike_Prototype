@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Collider2D _collider;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private CharacterAnimator _characterAnimator;
-    [SerializeField] private Hook _hook;
+    [SerializeField] private Combat _combat;
     [Header("Data")]
     [SerializeField] private PlayerData _playerData;
     [Header("Variables")]
@@ -21,13 +21,6 @@ public class Player : MonoBehaviour
     public MoveState MoveState { get; private set; }
     public LandState LandState { get; private set; }
     public JumpState JumpState { get; private set; }
-    public HookLaunchState HookLaunchState { get; private set; }
-    #region Attacks
-    public AttackForwardState ForwardAttack { get; private set; }
-    public AttackDownState DownAttack { get; private set; }
-    public AttackNeutralState NeutralAttack { get; private set; }
-    public AirAttackState AirAttack { get; private set; }
-    #endregion
     #endregion
 
     #region Private Fields
@@ -40,6 +33,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public Checker Checker => _checker;
     public CharacterAnimator Animator => _characterAnimator;
+    public Combat Combat => _combat;
     public int FacingDirection => _facingDirection;
     #endregion
 
@@ -59,11 +53,7 @@ public class Player : MonoBehaviour
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
-        HookLaunchState = new HookLaunchState(_stateMachine, _hook);
-        ForwardAttack = new AttackForwardState(_stateMachine, _playerData.AttackForwardData, _playerData.CharacterAnimationsData.AttackForward);
-        DownAttack = new AttackDownState(_stateMachine, _playerData.AttacDownData, _playerData.CharacterAnimationsData.AttackDown);
-        NeutralAttack = new AttackNeutralState(_stateMachine, _playerData.CharacterAnimationsData.AttackNeutral);
-        AirAttack = new AirAttackState(_stateMachine, _playerData.CharacterAnimationsData.AirAttack);
+        _combat.Initialize();
     }
 
     private void OnEnable()

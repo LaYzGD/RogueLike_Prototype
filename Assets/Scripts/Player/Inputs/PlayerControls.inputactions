@@ -24,24 +24,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "69e6595d-7c18-4c58-8bfd-3829d91f7a8c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Hook",
-                    "type": "Button",
-                    "id": "4efea777-d811-491b-b83f-84bb53c24df8",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Ability",
                     "type": "Button",
                     "id": "7c3abc0f-72d1-4f81-a3d3-f15f8dab7f68",
@@ -54,15 +36,6 @@
                     "name": "MenuOpen",
                     "type": "Button",
                     "id": "eec2ab03-8b7d-4f8b-942a-cae0aa6be761",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "InventoryOpen",
-                    "type": "Button",
-                    "id": "17b961cb-3d5e-4f15-b0b6-86b4b9255ce8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -138,28 +111,6 @@
                 },
                 {
                     "name": "",
-                    "id": "bbcd5798-c59b-40c1-9e9f-837c5b4ba30e",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2380de8f-d526-4193-8cd0-45cb0a3d1a3e",
-                    "path": "<Keyboard>/l",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hook",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "e8af9211-ed06-4bab-9a34-3219bec951c9",
                     "path": "<Keyboard>/k",
                     "interactions": "",
@@ -177,17 +128,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "MenuOpen",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "64e88ebb-70ec-4cf4-99a6-d2eb373a12c7",
-                    "path": "<Keyboard>/i",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "InventoryOpen",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
