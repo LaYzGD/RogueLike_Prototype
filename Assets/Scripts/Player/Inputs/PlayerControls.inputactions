@@ -24,22 +24,13 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Ability",
-                    "type": "Button",
-                    "id": "7c3abc0f-72d1-4f81-a3d3-f15f8dab7f68",
-                    "expectedControlType": "Button",
+                    "name": "Attack",
+                    "type": "Value",
+                    "id": "ba7ea0a2-415b-4f4d-b562-150a362ae35c",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MenuOpen",
-                    "type": "Button",
-                    "id": "eec2ab03-8b7d-4f8b-942a-cae0aa6be761",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -110,26 +101,59 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "e8af9211-ed06-4bab-9a34-3219bec951c9",
-                    "path": "<Keyboard>/k",
+                    "name": "2D Vector",
+                    "id": "d470afb9-7b54-40d9-a060-2fc9a8dfa088",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Ability",
-                    "isComposite": false,
+                    "action": "Attack",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "4d987a14-9d84-4b68-a66e-1bf1dfde0f0e",
-                    "path": "<Keyboard>/escape",
+                    "name": "up",
+                    "id": "e78829f2-7a7c-4895-ab64-bc15e82eb9c0",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MenuOpen",
+                    "action": "Attack",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "c6554738-7ac1-4aae-a378-935723419760",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "8367bc49-25f7-4209-94fa-e5d4f1ed4220",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "87355e0d-4409-4dfa-9410-a6e0c1507e63",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

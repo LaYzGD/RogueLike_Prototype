@@ -1,66 +1,42 @@
+using System;
 using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    [SerializeField] private float _detectionRange;
     [SerializeField] private CharacterAnimator _weaponAnimator;
-    [SerializeField] private string _animationBoolParameter;
-    [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private string _animationParameterName;
 
-    private bool _isLocked;
-    private Vector2 _targetPosition;
-
-    private TargetDetection _targetDetection;
-    public TargetDetection TargetDetection => _targetDetection;
-
-    public Vector2 TargetPosition => _targetPosition;
+    private Inputs _inputs;
+    private Action _flipAction;
 
     private bool _canFlip;
+    private bool _isInCombat;
 
-    public bool IsLocked => _isLocked;
-    public bool CanFlip => _canFlip;
+    public bool IsInCombat => _isInCombat;
 
-    private void OnEnable()
+    public void Initialize(Action flipAction, Inputs inputs)
     {
-        _weaponAnimator.OnAnimationStarted += SetCanFlipFalse;
-        _weaponAnimator.OnAnimationCompleted += SetCanFlipTrue;
-    }
-
-    public void Initialize()
-    {
-        _targetDetection = new(_detectionRange, transform, _enemyLayer, LockOnTarget, CancelTargetLock);
-    }
-
-    private void LockOnTarget(Vector2 position)
-    {
-        if (_isLocked) return;
-
-        _weaponAnimator.ChangeAnimationState(_animationBoolParameter, true);
-        _targetPosition = position;
-        _isLocked = true;
-    }
-
-    private void SetCanFlipFalse() 
-    {
-        _canFlip = false;
-    }
-
-    private void SetCanFlipTrue()
-    {
+        _inputs = inputs;
+        _flipAction = flipAction;
         _canFlip = true;
     }
 
-    private void CancelTargetLock()
+    public void UpdateCombat(int facingDirection)
     {
-        if (!_isLocked) return;
+        if (_inputs.HorizontalAttackDirection == 0 && _inputs.VerticalAttackDirection == 0)
+        {
+            _isInCombat = false;
+            _weaponAnimator.ChangeAnimationState(_animationParameterName, false);
+            return;
+        }
 
-        _weaponAnimator.ChangeAnimationState(_animationBoolParameter, false);
-        _isLocked = false;
-    }
+        _isInCombat = true;
 
-    private void OnDisable()
-    {
-        _weaponAnimator.OnAnimationStarted -= SetCanFlipFalse;
-        _weaponAnimator.OnAnimationCompleted -= SetCanFlipTrue;
+        _weaponAnimator.ChangeAnimationState(_animationParameterName, true);
+
+        if (_inputs.HorizontalAttackDirection != 0 && _inputs.HorizontalAttackDirection != facingDirection && _canFlip)
+        {
+            _flipAction();
+        }
     }
 }

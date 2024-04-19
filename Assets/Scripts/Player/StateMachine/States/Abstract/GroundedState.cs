@@ -6,10 +6,6 @@ public abstract class GroundedState : State
     private bool _isGrounded;
     private Rigidbody2D _rigidbody2D;
 
-    private bool _isTargetFound;
-
-    protected bool IsTargetFound => _isTargetFound;
-
     protected Rigidbody2D Rigidbody2D => _rigidbody2D;
 
     public GroundedState(PlayerStateMachine stateMachine) : base(stateMachine)
@@ -21,7 +17,7 @@ public abstract class GroundedState : State
     public override void DoChecks()
     {
         _isGrounded = _checker.IsGrounded();
-        _isTargetFound = Player.Combat.TargetDetection.IsTargetDetected();
+
     }
 
     public override void Enter()

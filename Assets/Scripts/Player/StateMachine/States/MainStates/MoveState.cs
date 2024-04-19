@@ -24,12 +24,8 @@ public class MoveState : GroundedState
             StateMachine.ChangeState(Player.IdleState);
         }
 
-        if (Player.Combat.IsLocked)
+        if (Player.Combat.IsInCombat)
         {
-            if ((Player.transform.position.x - Player.Combat.TargetPosition.x) / Player.FacingDirection > 0 && Player.Combat.CanFlip)
-            {
-                Player.Flip();
-            }
             return;
         }
 

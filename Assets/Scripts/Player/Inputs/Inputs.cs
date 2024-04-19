@@ -4,8 +4,11 @@ using UnityEngine.InputSystem;
 public class Inputs : MonoBehaviour
 {
     [SerializeField] private float _jumpInputHoldTime = 0.2f;
-    public int VerticalAimDirection { get; private set; }
+    public int VerticalMovementDirection { get; private set; }
     public int HorizontalMovementDirection { get; private set; }
+
+    public int HorizontalAttackDirection { get; private set; }
+    public int VerticalAttackDirection { get; private set; }
     public bool IsJump { get; private set; }
 
 
@@ -30,7 +33,7 @@ public class Inputs : MonoBehaviour
         Vector2 direction = context.ReadValue<Vector2>();
 
         HorizontalMovementDirection = Mathf.RoundToInt(direction.x);
-        VerticalAimDirection = Mathf.RoundToInt(direction.y);
+        VerticalMovementDirection = Mathf.RoundToInt(direction.y);
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
@@ -42,6 +45,13 @@ public class Inputs : MonoBehaviour
         }
     }
 
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        Vector2 direction = context.ReadValue<Vector2>();
+
+        HorizontalAttackDirection = Mathf.RoundToInt(direction.x);
+        VerticalAttackDirection = Mathf.RoundToInt(direction.y);
+    }
 
     public void UseJumpInput()
     {

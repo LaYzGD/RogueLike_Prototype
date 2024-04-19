@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
-        _combat.Initialize();
+        _combat.Initialize(Flip, _inputs);
     }
 
     private void OnEnable()
@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        _combat.UpdateCombat(_facingDirection);
         _stateMachine.Update();
     }
 
