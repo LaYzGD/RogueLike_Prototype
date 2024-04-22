@@ -1,42 +1,42 @@
-using System;
 using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+    [SerializeField] private CombatData _data;
     [SerializeField] private CharacterAnimator _weaponAnimator;
-    [SerializeField] private string _animationParameterName;
 
     private Inputs _inputs;
-    private Action _flipAction;
 
-    private bool _canFlip;
-    private bool _isInCombat;
+    private bool _isInHorizontalCombat;
 
-    public bool IsInCombat => _isInCombat;
+    public Inputs Inputs => _inputs;
+    public CharacterAnimator WeaponAnimator => _weaponAnimator;
+    public bool IsInHorizontalCombat => _isInHorizontalCombat;
 
-    public void Initialize(Action flipAction, Inputs inputs)
+    private CombatStateMachine _combatStateMachine;
+    public CombatIdleState CombatIdleState { get; private set; }
+    public CombatHorizontalState CombatHorizontalState { get; private set; }
+    public CombatUpState CombatUpState { get; private set; }
+
+    public void Initialize(Facing facing, Inputs inputs)
     {
         _inputs = inputs;
-        _flipAction = flipAction;
-        _canFlip = true;
+        _combatStateMachine = new CombatStateMachine(this);
+
+        CombatIdleState = new CombatIdleState(_combatStateMachine, ToggleHorizontalCombatMode, _data.IdleAttackParamName);
+        CombatHorizontalState = new CombatHorizontalState(_combatStateMachine, ToggleHorizontalCombatMode, facing, _data.HorizontalAttackParamName);
+        CombatUpState = new CombatUpState(_combatStateMachine, ToggleHorizontalCombatMode, _data.UpAttackParamName);
+
+        _combatStateMachine.Start(CombatIdleState);
     }
 
-    public void UpdateCombat(int facingDirection)
+    public void UpdateCombat()
     {
-        if (_inputs.HorizontalAttackDirection == 0 && _inputs.VerticalAttackDirection == 0)
-        {
-            _isInCombat = false;
-            _weaponAnimator.ChangeAnimationState(_animationParameterName, false);
-            return;
-        }
+        _combatStateMachine.Update();
+    }
 
-        _isInCombat = true;
-
-        _weaponAnimator.ChangeAnimationState(_animationParameterName, true);
-
-        if (_inputs.HorizontalAttackDirection != 0 && _inputs.HorizontalAttackDirection != facingDirection && _canFlip)
-        {
-            _flipAction();
-        }
+    private void ToggleHorizontalCombatMode(bool value) 
+    {
+        _isInHorizontalCombat = value;
     }
 }

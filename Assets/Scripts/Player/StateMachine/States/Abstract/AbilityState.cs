@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class AbilityState : State
+public abstract class AbilityState : PlayerState
 {
     private bool _isAbilityDone;
     private Rigidbody2D _rigidbody2D;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InAirState : State
+public class InAirState : PlayerState
 {
     private Checker _checker;
     private bool _isGrounded;
@@ -9,13 +9,15 @@ public class InAirState : State
     private MoveStateData _moveData;
     private string _animationParameter;
     private bool _isJump;
+    private Facing _facing;
 
-    public InAirState(PlayerStateMachine stateMachine, AirStateData data, MoveStateData moveData, string animationParameter) : base(stateMachine)
+    public InAirState(PlayerStateMachine stateMachine, AirStateData data, MoveStateData moveData, Facing facing, string animationParameter) : base(stateMachine)
     {
         _checker = Player.Checker;
         _rigidBody2D = Player.Rigidbody2D;
         _data = data;
         _animationParameter = animationParameter;
+        _facing = facing;
         _moveData = moveData;
     }
 
@@ -40,14 +42,14 @@ public class InAirState : State
             StateMachine.ChangeState(Player.LandState);
         }
 
-        if (Player.Combat.IsInCombat)
+        if (Player.Combat.IsInHorizontalCombat)
         {
             return;
         }
 
-        if (PlayerInputs.HorizontalMovementDirection != Player.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
+        if (PlayerInputs.HorizontalMovementDirection != _facing.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
         {
-            Player.Flip();
+            _facing.Flip();
         }
     }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class GroundedState : State
+public abstract class GroundedState : PlayerState
 {
     private Checker _checker;
     private bool _isGrounded;

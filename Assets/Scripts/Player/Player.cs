@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
 
     #region Private Fields
     private Checker _checker;
+    private Facing _facing;
     private PlayerStateMachine _stateMachine;
     #endregion
 
@@ -34,26 +35,29 @@ public class Player : MonoBehaviour
     public Checker Checker => _checker;
     public CharacterAnimator Animator => _characterAnimator;
     public Combat Combat => _combat;
-    public int FacingDirection => _facingDirection;
+    public Facing Facing => _facing;
     #endregion
 
     private void Awake()
     {
         _checker = new Checker(_collider, _playerData.GroundCheckData, _rigidbody2D);
+        _facing = new Facing(transform, _facingDirection);
         _stateMachine = new PlayerStateMachine(this);
 
         InAirState = new InAirState(_stateMachine,
                                     _playerData.AirStateData,
                                     _playerData.MoveStateData,
+                                    _facing,
                                     _playerData.CharacterAnimationsData.InAirAnimationParameter);
         IdleState = new IdleState(_stateMachine,
                                   _playerData.CharacterAnimationsData.IdleAnimationParameter);
         MoveState = new MoveState(_stateMachine,
                                   _playerData.MoveStateData,
+                                  _facing,
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
-        _combat.Initialize(Flip, _inputs);
+        _combat.Initialize(_facing, _inputs);
     }
 
     private void OnEnable()
@@ -63,18 +67,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        _combat.UpdateCombat(_facingDirection);
         _stateMachine.Update();
+        _combat.UpdateCombat();
     }
 
     private void FixedUpdate()
     {
         _stateMachine.FixedUpdate();
-    }
-
-    public void Flip()
-    {
-        transform.Rotate(0f, 180f, 0f);
-        _facingDirection *= -1;
     }
 }

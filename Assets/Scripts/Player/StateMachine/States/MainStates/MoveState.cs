@@ -4,9 +4,12 @@ public class MoveState : GroundedState
 {
     private MoveStateData _data;
     private string _animationParameter;
-    public MoveState(PlayerStateMachine stateMachine, MoveStateData data, string animationParameter) : base(stateMachine)
+    private Facing _facing;
+
+    public MoveState(PlayerStateMachine stateMachine, MoveStateData data, Facing facing, string animationParameter) : base(stateMachine)
     {
         _data = data;
+        _facing = facing;
         _animationParameter = animationParameter;
     }
 
@@ -24,14 +27,14 @@ public class MoveState : GroundedState
             StateMachine.ChangeState(Player.IdleState);
         }
 
-        if (Player.Combat.IsInCombat)
+        if (Player.Combat.IsInHorizontalCombat)
         {
             return;
         }
 
-        if (PlayerInputs.HorizontalMovementDirection != Player.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
+        if (PlayerInputs.HorizontalMovementDirection != _facing.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
         {
-            Player.Flip();
+            _facing.Flip();
         }
     }
 
