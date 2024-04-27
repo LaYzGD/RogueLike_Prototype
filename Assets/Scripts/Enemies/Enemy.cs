@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour, IDamagable
     private TargetDetection<Player> _targetDetection;
     private EnemyStateMachine _enemyStateMachine;
     public EnemyMoveState MoveState { get; private set; }
+    public EnemyChaseState ChaseState { get; private set; }
     public Facing Facing => _facing;
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public CharacterAnimator Animator => _animator;
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour, IDamagable
         _targetDetection = new TargetDetection<Player>(_targetCheckOrigin, _targetLayer);
         _enemyStateMachine = new EnemyStateMachine(this);
         MoveState = new EnemyMoveState(_enemyStateMachine, _wayDetection, 5f);
+        ChaseState = new EnemyChaseState(_enemyStateMachine);
     }
 
     private void Start()

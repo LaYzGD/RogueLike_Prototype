@@ -7,6 +7,7 @@ public class EnemyState : State
     private Facing _facing;
     private Rigidbody2D _rigidBody2D;
     private CharacterAnimator _characterAnimator;
+
     protected EnemyStateMachine StateMachine => _stateMachine;
     protected Enemy Enemy => _enemy;
     protected Facing Facing => _facing;
