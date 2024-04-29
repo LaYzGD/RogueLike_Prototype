@@ -31,4 +31,9 @@ public class WayDetection
 
         return false;
     }
+
+    public bool HasWall()
+    {
+        return Physics2D.Raycast(_frontCheckPoint.position, new Vector2(_facing.FacingDirection, 0f), _frontCheckDistance, _ground);
+    }
 }

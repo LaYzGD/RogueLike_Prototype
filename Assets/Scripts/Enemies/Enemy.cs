@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IDamagable
 {
+    [Header("Components")]
     [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private Collider2D _collider;
     [SerializeField] private Rigidbody2D _rigidbody2D;
+    [Header("Checks")]
     [SerializeField] private Transform _targetCheckOrigin;
     [SerializeField] private Transform _frontCheckOrigin;
     [SerializeField] private Transform _downCheckOrigin;
-    [SerializeField] private LayerMask _targetLayer;
-    [SerializeField] private LayerMask _groundLayer;
-    [SerializeField] private int _defaultFacingDirection = 1;
+    [Header("Data")]
+    [SerializeField] private EnemyData _enemyData;
+    [Header("Values")]
+    [SerializeField] private int _defaultFacingDirection;
     [SerializeField] private float _frontDistance;
     [SerializeField] private float _downDistance;
 
@@ -20,6 +23,7 @@ public class Enemy : MonoBehaviour, IDamagable
     private EnemyStateMachine _enemyStateMachine;
     public EnemyMoveState MoveState { get; private set; }
     public EnemyChaseState ChaseState { get; private set; }
+    public EnemyAttackState AttackState { get; private set; }
     public Facing Facing => _facing;
     public Rigidbody2D Rigidbody2D => _rigidbody2D;
     public CharacterAnimator Animator => _animator;
@@ -28,11 +32,12 @@ public class Enemy : MonoBehaviour, IDamagable
     private void Awake()
     {
         _facing = new Facing(transform, _defaultFacingDirection);
-        _wayDetection = new WayDetection(_frontDistance, _downDistance, _frontCheckOrigin, _downCheckOrigin, _groundLayer, _facing);
-        _targetDetection = new TargetDetection<Player>(_targetCheckOrigin, _targetLayer);
+        _wayDetection = new WayDetection(_frontDistance, _downDistance, _frontCheckOrigin, _downCheckOrigin, _enemyData.GroundLayer, _facing);
+        _targetDetection = new TargetDetection<Player>(_targetCheckOrigin, _enemyData.TargetLayer);
         _enemyStateMachine = new EnemyStateMachine(this);
-        MoveState = new EnemyMoveState(_enemyStateMachine, _wayDetection, 5f);
-        ChaseState = new EnemyChaseState(_enemyStateMachine);
+        MoveState = new EnemyMoveState(_enemyStateMachine, _wayDetection, _enemyData.MovementSpeed, _enemyData.DetectionRange, _enemyData.MoveAnimation);
+        ChaseState = new EnemyChaseState(_enemyStateMachine, _wayDetection, _enemyData.DetectionRange, _enemyData.AttackRange, _enemyData.ChaseSpeed, _enemyData.ChaseAnimation);
+        AttackState = new EnemyAttackState(_enemyStateMachine, _enemyData.AttackAnimation);
     }
 
     private void Start()
