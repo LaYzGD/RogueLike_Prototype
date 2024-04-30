@@ -1,11 +1,16 @@
+using System;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IDamagable
+public class Enemy : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private Collider2D _collider;
     [SerializeField] private Rigidbody2D _rigidbody2D;
+    [SerializeField] private Health _health;
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem _deathEffect;
+    [SerializeField] private ParticleSystem[] _hitEffects;
     [Header("Checks")]
     [SerializeField] private Transform _targetCheckOrigin;
     [SerializeField] private Transform _frontCheckOrigin;
@@ -29,7 +34,9 @@ public class Enemy : MonoBehaviour, IDamagable
     public CharacterAnimator Animator => _animator;
     public TargetDetection<Player> TargetDetection => _targetDetection;
 
-    private void Awake()
+    public event Action OnDie;
+
+    public void Init()
     {
         _facing = new Facing(transform, _defaultFacingDirection);
         _wayDetection = new WayDetection(_frontDistance, _downDistance, _frontCheckOrigin, _downCheckOrigin, _enemyData.GroundLayer, _facing);
@@ -38,16 +45,27 @@ public class Enemy : MonoBehaviour, IDamagable
         MoveState = new EnemyMoveState(_enemyStateMachine, _wayDetection, _enemyData.MovementSpeed, _enemyData.DetectionRange, _enemyData.MoveAnimation);
         ChaseState = new EnemyChaseState(_enemyStateMachine, _wayDetection, _enemyData.DetectionRange, _enemyData.AttackRange, _enemyData.ChaseSpeed, _enemyData.ChaseAnimation);
         AttackState = new EnemyAttackState(_enemyStateMachine, _enemyData.AttackAnimation);
-    }
-
-    private void Start()
-    {
+        _health.Restart();
         _enemyStateMachine.Start(MoveState);
+        _health.OnDie += Die;
+        _health.OnDamaged += Hit;
     }
 
-    public void TakeDamage(int damage)
+    private void Die()
     {
-        Debug.Log(damage);
+        _deathEffect.transform.position = transform.position;
+        _deathEffect.Play();
+        OnDie?.Invoke();
+        gameObject.SetActive(false);
+    }
+
+    private void Hit()
+    {
+        foreach (var effect in _hitEffects)
+        {
+            effect.gameObject.transform.position = transform.position;
+            effect.Play();
+        }
     }
 
     private void Update()
@@ -58,5 +76,11 @@ public class Enemy : MonoBehaviour, IDamagable
     private void FixedUpdate()
     {
         _enemyStateMachine.FixedUpdate();
+    }
+
+    private void OnDisable()
+    {
+        _health.OnDie -= Die;
+        _health.OnDamaged -= Hit;
     }
 }

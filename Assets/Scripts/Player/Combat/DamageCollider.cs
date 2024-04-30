@@ -3,6 +3,7 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     [SerializeField] private LayerMask _damagableLayer;
+    
 
     private int _damage;
 
@@ -17,6 +18,11 @@ public class DamageCollider : MonoBehaviour
         {
             return;
         }
+
+        //foreach (var particle in _particles) 
+        //{
+        //    _particlesPool.SpawnParticle(collision.transform.position, particle);
+        //}
 
         if (collision.TryGetComponent(out IDamagable damagable))
         {
