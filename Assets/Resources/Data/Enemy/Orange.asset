@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8446940f8eef01498af69d2fb81b1d1, type: 3}
-  m_Name: EnemyData
+  m_Name: Orange
   m_EditorClassIdentifier: 
   <DetectionRange>k__BackingField: 3
   <AttackRange>k__BackingField: 1
-  <MovementSpeed>k__BackingField: 4
+  <MovementSpeed>k__BackingField: 3
   <ChaseSpeed>k__BackingField: 6
   <GroundLayer>k__BackingField:
     serializedVersion: 2
@@ -26,3 +26,4 @@ MonoBehaviour:
   <MoveAnimation>k__BackingField: isMove
   <ChaseAnimation>k__BackingField: isChase
   <AttackAnimation>k__BackingField: isAttack
+  <EnemyBehaviourData>k__BackingField: {fileID: 11400000, guid: 9ee397e3eaebf454ba15bb5024152fbb, type: 2}

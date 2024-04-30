@@ -19,17 +19,9 @@ public class WayDetection
         _facing = facing;
     }
 
-    public bool HasWay()
+    public bool HasGround()
     {
-        bool hasGround = Physics2D.Raycast(_downCheckPoint.position, Vector2.down, _downCheckDistance, _ground);
-        bool hasWall = Physics2D.Raycast(_frontCheckPoint.position, new Vector2(_facing.FacingDirection, 0f), _frontCheckDistance, _ground);
-
-        if (hasGround && !hasWall)
-        {
-            return true;
-        }
-
-        return false;
+        return Physics2D.Raycast(_downCheckPoint.position, Vector2.down, _downCheckDistance, _ground);
     }
 
     public bool HasWall()

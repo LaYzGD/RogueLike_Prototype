@@ -3,17 +3,20 @@ using UnityEngine;
 public class EnemyMoveState : EnemyState
 {
     private WayDetection _wayDetection;
-    private bool _hasWay;
+    private bool _hasGround;
+    private bool _hasWall;
     private float _speed;
     private float _detectionRange;
     private bool _isTargetDetected;
     private string _animationParam;
-    public EnemyMoveState(EnemyStateMachine stateMachine, WayDetection wayDetection, float speed, float detectionRange, string animationParam) : base(stateMachine)
+    private EnemyBehaviourType _enemyBehaviourType;
+    public EnemyMoveState(EnemyStateMachine stateMachine, WayDetection wayDetection, float speed, float detectionRange, string animationParam, EnemyBehaviourType type) : base(stateMachine)
     {
         _wayDetection = wayDetection;
         _detectionRange = detectionRange;
         _speed = speed;
         _animationParam = animationParam;
+        _enemyBehaviourType = type;
     }
 
     public override void Enter()
@@ -26,23 +29,34 @@ public class EnemyMoveState : EnemyState
     public override void DoChecks()
     {
         base.DoChecks();
-        _hasWay = _wayDetection.HasWay();
+        _hasGround = _wayDetection.HasGround();
+        _hasWall = _wayDetection.HasWall();
         _isTargetDetected = Enemy.TargetDetection.IsTargetInRange(_detectionRange);
+        
+        if (_hasWall || !_hasGround)
+        {
+            Enemy.Facing.Flip();
+        }
+
+        if (_isTargetDetected)
+        {
+            if (_enemyBehaviourType == EnemyBehaviourType.Chase)
+            {
+                StateMachine.ChangeState(Enemy.ChaseState);
+                return;
+            }
+
+            if (_enemyBehaviourType == EnemyBehaviourType.Attack)
+            {
+                StateMachine.ChangeState(Enemy.AttackState);
+            }
+        }
     }
 
     public override void Update()
     {
         base.Update();
         DoChecks();
-        if (_isTargetDetected && _hasWay)
-        {
-            StateMachine.ChangeState(Enemy.ChaseState);
-            return;
-        }
-        if (!_hasWay) 
-        {
-            Enemy.Facing.Flip();
-        }
     }
 
     public override void FixedUpdate()

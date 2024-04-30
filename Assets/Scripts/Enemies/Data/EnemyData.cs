@@ -14,4 +14,5 @@ public class EnemyData : ScriptableObject
     [field: SerializeField] public string MoveAnimation { get; private set; }
     [field: SerializeField] public string ChaseAnimation { get; private set; }
     [field: SerializeField] public string AttackAnimation { get; private set; }
+    [field: SerializeField] public EnemyBehaviourData EnemyBehaviourData { get; private set; }
 }

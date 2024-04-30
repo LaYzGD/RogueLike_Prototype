@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPositions;
     [SerializeField] private EnemyPoolable[] _enemies;
-
+    [SerializeField] private int _amountToSpawn;
     private ObjectPool<EnemyPoolable> _pool;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        int amount = 3;
+        int amount = _amountToSpawn;
         
         if (amount > _spawnPositions.Length)
         {

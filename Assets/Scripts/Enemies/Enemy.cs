@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
         _wayDetection = new WayDetection(_frontDistance, _downDistance, _frontCheckOrigin, _downCheckOrigin, _enemyData.GroundLayer, _facing);
         _targetDetection = new TargetDetection<Player>(_targetCheckOrigin, _enemyData.TargetLayer);
         _enemyStateMachine = new EnemyStateMachine(this);
-        MoveState = new EnemyMoveState(_enemyStateMachine, _wayDetection, _enemyData.MovementSpeed, _enemyData.DetectionRange, _enemyData.MoveAnimation);
+        MoveState = new EnemyMoveState(_enemyStateMachine, _wayDetection, _enemyData.MovementSpeed, _enemyData.DetectionRange, _enemyData.MoveAnimation, _enemyData.EnemyBehaviourData.TargetSpoted);
         ChaseState = new EnemyChaseState(_enemyStateMachine, _wayDetection, _enemyData.DetectionRange, _enemyData.AttackRange, _enemyData.ChaseSpeed, _enemyData.ChaseAnimation);
         AttackState = new EnemyAttackState(_enemyStateMachine, _enemyData.AttackAnimation);
         _health.Restart();
