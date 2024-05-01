@@ -1,9 +1,9 @@
 public class EnemyStateMachine : StateMachine
 {
-    private Enemy _enemy;
-    public Enemy Enemy => _enemy; 
-    public EnemyStateMachine(Enemy enemy) 
+    private EnemyBase _enemyBase;
+    public EnemyBase EnemyBase => _enemyBase;
+    public EnemyStateMachine(EnemyBase enemyBase)
     {
-        _enemy = enemy;
+        _enemyBase = enemyBase;
     }
 }
