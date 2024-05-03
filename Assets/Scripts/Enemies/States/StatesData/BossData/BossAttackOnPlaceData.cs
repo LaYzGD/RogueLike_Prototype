@@ -1,10 +1,11 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Enemy/BossAttackOnPlace", fileName = "AttackOnPlace")]
+[CreateAssetMenu(menuName = "Data/Enemy/Attacks/BossAttackOnPlace", fileName = "AttackOnPlace")]
 public class BossAttackOnPlaceData : EnemyStateDataBase
 {
     public override void EnterLogic()
     {
+        RigidBody2D.velocity = Vector2.zero;
         CharacterAnimator.OnAnimationTriggered += AnimationTriggerLogic;
         CharacterAnimator.OnAnimationCompleted += AnimationCompletedLogic;
         base.EnterLogic();
@@ -12,26 +13,12 @@ public class BossAttackOnPlaceData : EnemyStateDataBase
 
     public override void AnimationTriggerLogic()
     {
-        
+        CheckTarget();
     }
 
     public override void AnimationCompletedLogic()
     {
-        var nextState = EnemyBase.GetNextState();
-        switch (nextState)
-        {
-            case EnemyStateType.Attack:
-                EnemyBase.SetNewAttackData(EnemyBase.Attacks[UnityEngine.Random.Range(0, EnemyBase.Attacks.Length)]);
-                EnemyBase.StateMachine.ChangeState(EnemyBase.AttackState);
-                break;
-            case EnemyStateType.Idle:
-                EnemyBase.StateMachine.ChangeState(EnemyBase.IdleState);
-                break;
-            case EnemyStateType.Move:
-                EnemyBase.StateMachine.ChangeState(EnemyBase.MoveState);
-                break;
-        }
-        
+        ChangeState();
     }
 
     public override void ExitLogic()

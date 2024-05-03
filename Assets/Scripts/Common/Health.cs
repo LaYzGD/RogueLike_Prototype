@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable
 {
-    [SerializeField] private int _maxHealth;
+    private int _maxHealth;
 
     private int _currentHealth;
 
-    public event Action OnDamaged;
+    public event Action<int> OnDamaged;
     public event Action OnDie;
 
-    private void Start()
+    public void Init(int maxHealth)
     {
+        _maxHealth = maxHealth;
         _currentHealth = _maxHealth;
     }
 
@@ -23,7 +24,7 @@ public class Health : MonoBehaviour, IDamagable
         }
 
         _currentHealth -= damage;
-        OnDamaged?.Invoke();
+        OnDamaged?.Invoke(_currentHealth);
         if (_currentHealth <= 0)
         {
             _currentHealth = 0;

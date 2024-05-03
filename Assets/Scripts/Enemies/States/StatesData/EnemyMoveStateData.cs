@@ -1,8 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Enemy/IdleState/EnemyIdleStateData", fileName = "IdleStateData")]
-public class EnemyIdleStateDataBase : EnemyStateDataBase
+[CreateAssetMenu(menuName = "Data/Enemy/MoveState/EnemyMoveStateData", fileName = "MovetateData")]
+
+public class EnemyMoveStateData : EnemyStateDataBase 
 {
+    [SerializeField] private float _movementSpeed;
     [SerializeField] private float _timeLeft;
     private float _currentTime;
     public override void EnterLogic()
@@ -14,9 +16,15 @@ public class EnemyIdleStateDataBase : EnemyStateDataBase
 
     public override void UpdateLogic()
     {
+        CheckTarget();
         if (Time.time >= _currentTime + _timeLeft)
         {
             ChangeState();
         }
+    }
+
+    public override void FixedUpdateLogic()
+    {
+        RigidBody2D.velocity = new Vector2(_movementSpeed * Facing.FacingDirection, RigidBody2D.velocity.y);
     }
 }

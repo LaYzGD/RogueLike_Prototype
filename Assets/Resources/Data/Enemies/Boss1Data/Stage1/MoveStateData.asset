@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8be5ff172ddd9cc48a9af60abfe924f4, type: 3}
-  m_Name: IdleStateData
+  m_Script: {fileID: 11500000, guid: 98a248d27dbc24c49824e274de93eca5, type: 3}
+  m_Name: MoveStateData
   m_EditorClassIdentifier: 
-  _animationParamName: isIdle
-  _timeLeft: 0.5
+  _animationParamName: isMove
+  _movementSpeed: 3
+  _timeLeft: 1

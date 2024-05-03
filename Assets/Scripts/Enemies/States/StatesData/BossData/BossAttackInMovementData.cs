@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Enemy/BossAttackInMovement", fileName = "AttackInMovement")]
+[CreateAssetMenu(menuName = "Data/Enemy/Attacks/BossAttackInMovement", fileName = "AttackInMovement")]
 public class BossAttackInMovementData : EnemyStateDataBase
 {
     [SerializeField] private float _movementSpeed;
@@ -14,7 +14,8 @@ public class BossAttackInMovementData : EnemyStateDataBase
 
     private void AnimationStartedLogic() 
     {
-        RigidBody2D.velocity = new Vector2(_movementSpeed, RigidBody2D.velocity.y);
+        CheckTarget();
+        RigidBody2D.velocity = new Vector2(_movementSpeed * Facing.FacingDirection, RigidBody2D.velocity.y);
         Debug.Log(RigidBody2D.velocity);
     }
 
@@ -25,21 +26,7 @@ public class BossAttackInMovementData : EnemyStateDataBase
 
     public override void AnimationCompletedLogic()
     {
-        var nextState = EnemyBase.GetNextState();
-        switch (nextState)
-        {
-            case EnemyStateType.Attack:
-                EnemyBase.SetNewAttackData(EnemyBase.Attacks[UnityEngine.Random.Range(0, EnemyBase.Attacks.Length)]);
-                EnemyBase.StateMachine.ChangeState(EnemyBase.AttackState);
-                break;
-            case EnemyStateType.Idle:
-                EnemyBase.StateMachine.ChangeState(EnemyBase.IdleState);
-                break;
-            case EnemyStateType.Move:
-                EnemyBase.StateMachine.ChangeState(EnemyBase.MoveState);
-                break;
-        }
-
+        ChangeState();
     }
 
     public override void ExitLogic()

@@ -7,20 +7,38 @@ public class EnemyBase : MonoBehaviour
     [Space]
     [SerializeField] private EnemyStateDataBase _idleData;
     [SerializeField] private EnemyStateDataBase _moveData;
-    [SerializeField] private EnemyStateDataBase[] _attacksData;
+    [SerializeField] private Stage _stage;
     [SerializeField] private EnemyStateDataBase _deathData;
     [Header("Components")]
     [SerializeField] private EnemyStateType[] _states;
     [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private Rigidbody2D _rigidBody2D;
+    [SerializeField] private Transform _body;
+    [SerializeField] private Health _health;
+    [Header("Data")]
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private int[] _healthToChangeStage;
+    [SerializeField] private int _defaultFacingDirection;
+    [SerializeField] private float _checkCloseThreshold;
+    [SerializeField] private float _checkFarThreshold;
+
+    private int _index = 0;
+    private int _stageIndex = 0;
+    private EnemyAttacks _currentStage;
+    private EnemyStateMachine _stateMachine;
+    private Facing _facing;
+    private Transform _target;
+
     public CharacterAnimator Animator => _animator;
     public Rigidbody2D Rigidbody2D => _rigidBody2D;
     public EnemyStateType[] States => _states;
+    public Facing Facing => _facing;
+    public Transform Target => _target;
+    public Transform Body => _body;
+    public float CloseThreshold => _checkCloseThreshold;
+    public float FarThreshold => _checkFarThreshold;
 
-    public EnemyStateDataBase[] Attacks => _attacksData;
-
-    private EnemyStateMachine _stateMachine;
-
+    public EnemyAttacks Attacks => _stage.Stages[_stageIndex];
     public EnemyStateMachine StateMachine => _stateMachine;
     public EnemyStartState StartState { get; private set; }
     public EnemyActionState IdleState { get; private set; }
@@ -28,15 +46,20 @@ public class EnemyBase : MonoBehaviour
     public EnemyActionState AttackState { get; private set; }
     public EnemyDeathState DeathState { get; private set; }
 
-    private int _index = 0;
-
-    private void Awake()
+    public void Initialize(Transform target = null)
     {
+        if (target != null)
+        {
+            _target = target;
+        }
+        
         _stateMachine = new EnemyStateMachine(this);
+        _facing = new Facing(_body, _defaultFacingDirection);
+        _currentStage = Instantiate(_stage.Stages[_stageIndex]);
 
         var idleData = Instantiate(_idleData);
         var moveData = Instantiate(_moveData);
-        var attackData = Instantiate(_attacksData[UnityEngine.Random.Range(0, _attacksData.Length)]);
+        var attackData = Instantiate(_currentStage.DefaultAttacks[UnityEngine.Random.Range(0, _currentStage.DefaultAttacks.Count)]);
         var deathData = Instantiate(_deathData);
 
         StartState = new EnemyStartState(_stateMachine, _startAnimationParam);
@@ -44,9 +67,11 @@ public class EnemyBase : MonoBehaviour
         MoveState = new EnemyActionState(_stateMachine, moveData);
         AttackState = new EnemyActionState(_stateMachine, attackData);
         DeathState = new EnemyDeathState(_stateMachine, deathData);
+        _health.Init(_maxHealth);
+        _health.OnDamaged += CheckStageTransition;
     }
 
-    private void OnEnable()
+    public void WakeUp()
     {
         _stateMachine.Start(StartState);
     }
@@ -65,6 +90,34 @@ public class EnemyBase : MonoBehaviour
     {
         var newAttackData = Instantiate(data);
         AttackState = new EnemyActionState(_stateMachine, newAttackData);
+    }
+
+    private void CheckStageTransition(int currentHealth)
+    {
+        if (_stageIndex >= _healthToChangeStage.Length)
+        {
+            return;
+        }
+
+        if (currentHealth <= _healthToChangeStage[_stageIndex])
+        {
+            GoToNextStage();
+        }
+    }
+
+    public virtual void GoToNextStage()
+    {
+        if (_stageIndex >= _stage.Stages.Length)
+        {
+            return;
+        }
+
+        _stageIndex++;
+        _currentStage = Instantiate(_stage.Stages[_stageIndex]);
+        if (_currentStage.Controller != null)
+        {
+            _animator.SetController(_currentStage.Controller);
+        }
     }
 
     public EnemyStateType GetNextState()

@@ -1533,6 +1533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1122516649}
   - component: {fileID: 1122516650}
+  - component: {fileID: 1122516651}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Untagged
@@ -1602,6 +1603,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5178409, y: 3.2914472}
   m_EdgeRadius: 0
+--- !u!114 &1122516651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122516648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db435b33062775341946396b7c57bc6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1146252672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,15 +2282,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startAnimationParam: Start
   _idleData: {fileID: 11400000, guid: 8fd86db1c4e65c8449b8ec9113f54acb, type: 2}
-  _moveData: {fileID: 11400000, guid: 8fd86db1c4e65c8449b8ec9113f54acb, type: 2}
-  _attacksData:
-  - {fileID: 11400000, guid: 1a0845c8d7841684e906c7db7e67e93e, type: 2}
-  - {fileID: 11400000, guid: f9e89e591a0013346a11835bc76557cc, type: 2}
-  - {fileID: 11400000, guid: a2ee2942f4ff70f429d7fa156068dce5, type: 2}
+  _moveData: {fileID: 11400000, guid: 9aa07a013e799fe4d9cadbd10dec0be5, type: 2}
+  _stage: {fileID: 11400000, guid: 51ccd219142fdd943b03f786b8e02f38, type: 2}
   _deathData: {fileID: 11400000, guid: 8fd86db1c4e65c8449b8ec9113f54acb, type: 2}
-  _states: 0000000001000000
+  _states: 0000000002000000010000000200000001000000
   _animator: {fileID: 1072553200}
   _rigidBody2D: {fileID: 1322070173}
+  _body: {fileID: 1122516649}
+  _health: {fileID: 1122516651}
+  _maxHealth: 50
+  _healthToChangeStage: 19000000
+  _defaultFacingDirection: 1
+  _checkCloseThreshold: 2
+  _checkFarThreshold: 7
 --- !u!50 &1322070173
 Rigidbody2D:
   serializedVersion: 4
@@ -2967,6 +2984,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1684236794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684236795}
+  - component: {fileID: 1684236796}
+  m_Layer: 0
+  m_Name: BossSceneRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1684236795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684236794}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1684236796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684236794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f4f2e475dd70d74b89a9b675088b037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1300892564}
+  _boss: {fileID: 1322070172}
 --- !u!1 &1691415526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3694,3 +3757,4 @@ SceneRoots:
   - {fileID: 1942214564}
   - {fileID: 1300892560}
   - {fileID: 1006534371}
+  - {fileID: 1684236795}
