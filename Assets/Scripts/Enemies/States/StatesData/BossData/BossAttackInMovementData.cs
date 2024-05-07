@@ -6,6 +6,7 @@ public class BossAttackInMovementData : EnemyStateDataBase
     [SerializeField] private float _movementSpeed;
     public override void EnterLogic()
     {
+        RigidBody2D.velocity = Vector2.zero;
         CharacterAnimator.OnAnimationStarted += AnimationStartedLogic;
         CharacterAnimator.OnAnimationTriggered += AnimationTriggerLogic;
         CharacterAnimator.OnAnimationCompleted += AnimationCompletedLogic;

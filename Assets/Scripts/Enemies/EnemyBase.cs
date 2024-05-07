@@ -21,6 +21,9 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private int _defaultFacingDirection;
     [SerializeField] private float _checkCloseThreshold;
     [SerializeField] private float _checkFarThreshold;
+    [Space]
+    [SerializeField] private float _checkDistance;
+    [SerializeField] private LayerMask _targetLayerMask;
 
     private int _index = 0;
     private int _stageIndex = 0;
@@ -28,6 +31,7 @@ public class EnemyBase : MonoBehaviour
     private EnemyStateMachine _stateMachine;
     private Facing _facing;
     private Transform _target;
+    private TargetDetection _targetDetection;
 
     public CharacterAnimator Animator => _animator;
     public Rigidbody2D Rigidbody2D => _rigidBody2D;
@@ -37,6 +41,7 @@ public class EnemyBase : MonoBehaviour
     public Transform Body => _body;
     public float CloseThreshold => _checkCloseThreshold;
     public float FarThreshold => _checkFarThreshold;
+    public TargetDetection TargetDetection => _targetDetection;
 
     public EnemyAttacks Attacks => _stage.Stages[_stageIndex];
     public EnemyStateMachine StateMachine => _stateMachine;
@@ -52,10 +57,11 @@ public class EnemyBase : MonoBehaviour
         {
             _target = target;
         }
-        
+
         _stateMachine = new EnemyStateMachine(this);
         _facing = new Facing(_body, _defaultFacingDirection);
         _currentStage = Instantiate(_stage.Stages[_stageIndex]);
+        _targetDetection = new TargetDetection(_checkDistance, _rigidBody2D.transform, _facing, _targetLayerMask);
 
         var idleData = Instantiate(_idleData);
         var moveData = Instantiate(_moveData);

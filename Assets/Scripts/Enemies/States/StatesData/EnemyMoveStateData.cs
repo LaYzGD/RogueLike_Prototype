@@ -7,6 +7,7 @@ public class EnemyMoveStateData : EnemyStateDataBase
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _timeLeft;
     private float _currentTime;
+
     public override void EnterLogic()
     {
         base.EnterLogic();
@@ -17,6 +18,13 @@ public class EnemyMoveStateData : EnemyStateDataBase
     public override void UpdateLogic()
     {
         CheckTarget();
+
+        if (EnemyBase.TargetDetection.CheckFront())
+        {
+            CheckAttackState();
+            return;
+        }
+
         if (Time.time >= _currentTime + _timeLeft)
         {
             ChangeState();

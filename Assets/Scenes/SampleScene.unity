@@ -2295,6 +2295,10 @@ MonoBehaviour:
   _defaultFacingDirection: 1
   _checkCloseThreshold: 2
   _checkFarThreshold: 7
+  _checkDistance: 2
+  _targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!50 &1322070173
 Rigidbody2D:
   serializedVersion: 4

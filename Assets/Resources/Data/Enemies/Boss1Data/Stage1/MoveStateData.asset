@@ -15,3 +15,7 @@ MonoBehaviour:
   _animationParamName: isMove
   _movementSpeed: 3
   _timeLeft: 1
+  _checkRadius: 4
+  _checkLayer:
+    serializedVersion: 2
+    m_Bits: 256
