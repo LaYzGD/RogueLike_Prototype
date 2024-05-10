@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StoneCrab
+  m_Controller: {fileID: 9100000, guid: 3aadcbadf24613a469d060ef38815361, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9e872db014295f44db7475a1b9a6f4e1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5dddbb556468f8b498373200d531d46d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 981970d8183a40b4fa997a72ab93c598, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7777ba84778a33640a83ea8df7b7e44c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d9eb64c5542fa0f489ee1a946f24518b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b69a6136c64f70b4e8736a643829e178, type: 2}

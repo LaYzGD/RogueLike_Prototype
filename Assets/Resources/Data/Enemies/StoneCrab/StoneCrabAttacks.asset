@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a7573925812b044af670d04bf2b4e1, type: 3}
+  m_Name: StoneCrabAttacks
+  m_EditorClassIdentifier: 
+  <DefaultAttacks>k__BackingField:
+  - {fileID: 11400000, guid: a13cc39cc1c06f64d85a8edd9d19928c, type: 2}
+  <CloseAttacks>k__BackingField: []
+  <DistantAttacks>k__BackingField: []
+  <Controller>k__BackingField: {fileID: 22100000, guid: bdb82d201e2870340a6d751683b3734e, type: 2}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMoveStateData : EnemyStateDataBase 
 {
+    [SerializeField] private bool _isMovementDependsOnTime = true;
     [SerializeField] private float _movementSpeed;
     [SerializeField] private float _timeLeft;
     private float _currentTime;
@@ -22,6 +23,11 @@ public class EnemyMoveStateData : EnemyStateDataBase
         if (EnemyBase.TargetDetection.CheckFront())
         {
             CheckAttackState();
+            return;
+        }
+
+        if (!_isMovementDependsOnTime)
+        {
             return;
         }
 

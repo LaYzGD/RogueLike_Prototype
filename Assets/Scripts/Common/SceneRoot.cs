@@ -7,7 +7,7 @@ public class SceneRoot : MonoBehaviour
 
     private void Awake()
     {
-        _boss.Initialize(_player.transform);    
+        _boss.Initialize(_player.transform);
     }
 
     private void Start()

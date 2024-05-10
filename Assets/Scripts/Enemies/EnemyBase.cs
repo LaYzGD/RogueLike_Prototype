@@ -15,6 +15,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidBody2D;
     [SerializeField] private Transform _body;
     [SerializeField] private Health _health;
+    [SerializeField] private ProjectileSpawner _projectileSpawner;
     [Header("Data")]
     [SerializeField] private int _maxHealth;
     [SerializeField] private int[] _healthToChangeStage;
@@ -42,6 +43,7 @@ public class EnemyBase : MonoBehaviour
     public float CloseThreshold => _checkCloseThreshold;
     public float FarThreshold => _checkFarThreshold;
     public TargetDetection TargetDetection => _targetDetection;
+    public ProjectileSpawner Spawner => _projectileSpawner;
 
     public EnemyAttacks Attacks => _stage.Stages[_stageIndex];
     public EnemyStateMachine StateMachine => _stateMachine;
