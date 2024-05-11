@@ -30,6 +30,12 @@ public abstract class GroundedState : PlayerState
     {
         DoChecks();
 
+        if (_checker.IsTouchingOneWayPlatform(out OneWayPlatform platform) && PlayerInputs.VerticalMovementDirection < 0)
+        {
+            Debug.Log("OnWay");
+            platform.DropDown();
+        }
+
         if (PlayerInputs.IsJump)
         {
             PlayerInputs.UseJumpInput();

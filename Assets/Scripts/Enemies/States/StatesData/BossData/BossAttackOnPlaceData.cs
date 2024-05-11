@@ -22,7 +22,7 @@ public class BossAttackOnPlaceData : EnemyStateDataBase
     {
         if (_isShootingProjectiles) 
         {
-            EnemyBase.Spawner.SpawnProjectile(new Vector2(EnemyBase.Facing.FacingDirection, 0f), EnemyBase.Body.position, EnemyBase.Body.rotation);
+            EnemyBase.Spawner.SpawnProjectile(new Vector2(EnemyBase.Facing.FacingDirection, 0f), EnemyBase.Body.rotation);
         }
         else
         {

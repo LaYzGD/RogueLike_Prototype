@@ -4,6 +4,7 @@ using UnityEngine.Pool;
 public class ProjectileSpawner : MonoBehaviour
 {
     [SerializeField] private Projectile _projectile;
+    [SerializeField] private Transform _spawnPosition;
 
     private ProjectileData _projectileData;
     private ObjectPool<Projectile> _pool;
@@ -16,6 +17,14 @@ public class ProjectileSpawner : MonoBehaviour
                                            (p) => p.gameObject.SetActive(false),
                                            (p) => Destroy(p.gameObject),
                                            false);
+    }
+
+    public void SpawnProjectile(Vector2 direction, Quaternion rotation)
+    {
+        var proj = _pool.Get();
+        proj.transform.position = _spawnPosition.position;
+        proj.transform.rotation = rotation;
+        proj.Initialize(DespawnProjectile, direction, _projectileData);
     }
 
     public void SpawnProjectile(Vector2 direction, Vector2 position, Quaternion rotation)

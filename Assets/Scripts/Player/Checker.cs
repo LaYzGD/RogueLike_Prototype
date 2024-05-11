@@ -21,4 +21,23 @@ public class Checker
                                  _groundCheckData.CheckDistance,
                                  _groundCheckData.GroundLayer.value) && _rigidbody2D.velocity.y < _groundCheckData.VerticalVelocityTreshold;
     }
+
+    public bool IsTouchingOneWayPlatform(out OneWayPlatform platform)
+    {
+        RaycastHit2D hitInfo = Physics2D.BoxCast(_origin.bounds.center,
+                                 _origin.bounds.size,
+                                 _groundCheckData.CheckAngle,
+                                 _groundCheckData.CheckDirection,
+                                 _groundCheckData.CheckDistance,
+                                 _groundCheckData.GroundLayer.value);
+
+        if (hitInfo.collider != null && hitInfo.collider.TryGetComponent(out OneWayPlatform p))
+        {
+            platform = p;
+            return true;
+        }
+
+        platform = null;
+        return false;
+    }
 }
