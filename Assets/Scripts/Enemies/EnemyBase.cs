@@ -14,6 +14,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private Rigidbody2D _rigidBody2D;
     [SerializeField] private Transform _body;
+    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private Transform _frontCheck;
     [SerializeField] private Health _health;
     [SerializeField] private ProjectileSpawner _projectileSpawner;
     [Header("Data")]
@@ -44,6 +46,8 @@ public class EnemyBase : MonoBehaviour
     public float FarThreshold => _checkFarThreshold;
     public TargetDetection TargetDetection => _targetDetection;
     public ProjectileSpawner Spawner => _projectileSpawner;
+    public Transform GroundCheck => _groundCheck;
+    public Transform FrontCheck => _frontCheck;
 
     public EnemyAttacks Attacks => _stage.Stages[_stageIndex];
     public EnemyStateMachine StateMachine => _stateMachine;

@@ -3,15 +3,22 @@ using UnityEngine;
 public class SceneRoot : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private EnemyBase _boss;
+    [SerializeField] private bool _hasTarget;
+    [SerializeField] private EnemyBase[] _enemies;
 
     private void Awake()
     {
-        _boss.Initialize(_player.transform);
+        foreach (var enemy in _enemies)
+        {
+            enemy.Initialize(_hasTarget ? _player.transform : null);
+        }
     }
 
     private void Start()
     {
-        _boss.WakeUp();
+        foreach(var enemy in _enemies) 
+        {
+            enemy.WakeUp();
+        }
     }
 }

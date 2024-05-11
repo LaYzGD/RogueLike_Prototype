@@ -7,12 +7,12 @@ public class EnemyStateDataBase : ScriptableObject
     private Rigidbody2D _rigidBody2D;
     private CharacterAnimator _characterAnimator;
     private EnemyBase _enemyBase;
-    private Transform _target;
+    protected Transform target { get; private set; }
     private Facing _facing;
     protected Rigidbody2D RigidBody2D => _rigidBody2D;
     protected CharacterAnimator CharacterAnimator => _characterAnimator;
     protected EnemyBase EnemyBase => _enemyBase;
-    protected Transform Target => _target;
+    protected Transform Target => target;
     protected Facing Facing => _facing;
 
     public string AnimationParamName => _animationParamName;
@@ -22,22 +22,22 @@ public class EnemyStateDataBase : ScriptableObject
         _rigidBody2D = rb;
         _characterAnimator = animator;
         _enemyBase = enemyBase;
-        _target = EnemyBase.Target;
+        target = EnemyBase.Target;
         _facing = enemyBase.Facing;
     }
 
     public virtual void CheckTarget()
     {
-        if (_target == null)
+        if (target == null)
         {
             return;
         }
 
-        if (_target.position.x > EnemyBase.Body.position.x && _facing.FacingDirection < 0)
+        if (target.position.x > EnemyBase.Body.position.x && _facing.FacingDirection < 0)
         {
             _facing.Flip();
         }
-        else if (_target.position.x < EnemyBase.Body.position.x && _facing.FacingDirection > 0)
+        else if (target.position.x < EnemyBase.Body.position.x && _facing.FacingDirection > 0)
         {
             _facing.Flip();
         }
@@ -86,9 +86,9 @@ public class EnemyStateDataBase : ScriptableObject
 
     public virtual bool CheckTargetClose()
     {
-        if (_target == null) return false;
+        if (target == null) return false;
 
-        if (Vector2.Distance(_target.position, EnemyBase.Body.position) <= EnemyBase.CloseThreshold)
+        if (Vector2.Distance(target.position, EnemyBase.Body.position) <= EnemyBase.CloseThreshold)
         {
             return true;
         }
@@ -98,9 +98,9 @@ public class EnemyStateDataBase : ScriptableObject
 
     public virtual bool CheckTargetFar()
     {
-        if (_target == null) return false;
+        if (target == null) return false;
 
-        if (Vector2.Distance(_target.position, EnemyBase.Body.position) >= EnemyBase.FarThreshold)
+        if (Vector2.Distance(target.position, EnemyBase.Body.position) >= EnemyBase.FarThreshold)
         {
             return true;
         }
