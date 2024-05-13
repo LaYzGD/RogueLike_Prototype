@@ -19,6 +19,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private ProjectileSpawner _projectileSpawner;
     [Header("Data")]
+    [SerializeField] private bool _needTarget = false;
     [SerializeField] private int _maxHealth;
     [SerializeField] private int[] _healthToChangeStage;
     [SerializeField] private int _defaultFacingDirection;
@@ -59,7 +60,7 @@ public class EnemyBase : MonoBehaviour
 
     public void Initialize(Transform target = null)
     {
-        if (target != null)
+        if (target != null && _needTarget)
         {
             _target = target;
         }
@@ -86,6 +87,7 @@ public class EnemyBase : MonoBehaviour
     public void WakeUp()
     {
         _stateMachine.Start(StartState);
+        _health.OnDie += Die;
     }
 
     private void Update()
@@ -132,6 +134,11 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    private void Die()
+    {
+        gameObject.SetActive(false);
+    }
+
     public EnemyStateType GetNextState()
     {
         var index = _index;
@@ -143,5 +150,10 @@ public class EnemyBase : MonoBehaviour
         }
 
         return _states[index];
+    }
+
+    private void OnDisable()
+    {
+        _health.OnDie -= Die;
     }
 }

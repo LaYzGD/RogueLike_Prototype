@@ -10,6 +10,7 @@ public class EnemyStartState : EnemyState
     {
         Animator.OnAnimationCompleted += ChangeState;
         Animator.ChangeAnimationState(_animationParam, true);
+        EnemyBase.Rigidbody2D.isKinematic = false;
     }
 
     private void ChangeState()

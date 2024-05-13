@@ -19,11 +19,6 @@ public class DamageCollider : MonoBehaviour
             return;
         }
 
-        //foreach (var particle in _particles) 
-        //{
-        //    _particlesPool.SpawnParticle(collision.transform.position, particle);
-        //}
-
         if (collision.TryGetComponent(out IDamagable damagable))
         {
             damagable.TakeDamage(_damage);
