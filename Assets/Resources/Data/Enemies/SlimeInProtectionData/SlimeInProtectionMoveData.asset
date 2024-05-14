@@ -16,3 +16,8 @@ MonoBehaviour:
   _isMovementDependsOnTime: 0
   _movementSpeed: 3
   _timeLeft: 0
+  _groundCheckDistance: 0.5
+  _frontCheckDistance: 1
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba278303c85eb3408c7c8dc46219a5e, type: 3}
   m_Name: StoneCrabProjectileData
   m_EditorClassIdentifier: 
-  <MovementSpeed>k__BackingField: 10
+  <MovementSpeed>k__BackingField: 15
   <Damage>k__BackingField: 2
   <GravityScale>k__BackingField: 0
   <DamageLayer>k__BackingField:
