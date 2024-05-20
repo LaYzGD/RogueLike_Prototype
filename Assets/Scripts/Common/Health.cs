@@ -6,12 +6,14 @@ public class Health : MonoBehaviour, IDamagable
     private int _maxHealth;
 
     private int _currentHealth;
+    private bool _isImune;
 
     public event Action<int> OnDamaged;
     public event Action OnDie;
 
-    public void Init(int maxHealth)
+    public void Init(int maxHealth, bool isImune)
     {
+        _isImune = isImune;
         _maxHealth = maxHealth;
         _currentHealth = _maxHealth;
     }
@@ -19,6 +21,11 @@ public class Health : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         if (damage <= 0)
+        {
+            return;
+        }
+
+        if (_isImune)
         {
             return;
         }
@@ -31,6 +38,11 @@ public class Health : MonoBehaviour, IDamagable
             OnDie?.Invoke();
             return;
         }
+    }
+
+    public void SetImune(bool value) 
+    {
+        _isImune = value;
     }
 
     public void Restart()

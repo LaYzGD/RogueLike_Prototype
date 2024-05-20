@@ -4,25 +4,29 @@ public class SceneRoot : MonoBehaviour
 {
     [SerializeField] private Player _player;
     [SerializeField] private Collider2D _collider;
-    [SerializeField] private EnemyBase[] _enemies;
+    [SerializeField] private Wave[] _waves;
 
-    private void Awake()
-    {
-        foreach (var enemy in _enemies)
-        {
-            enemy.Initialize( _player.transform);
-        }
-    }
+    private int _currentWaveIndex;
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.TryGetComponent(out Player player))
         {
             _collider.enabled = false;
-            foreach (var enemy in _enemies)
-            {
-                enemy.WakeUp();
-            }
+            _waves[_currentWaveIndex].SpawnEnemies(SpawnNewWave);
+            _currentWaveIndex++;
         }
+    }
+
+    private void SpawnNewWave() 
+    {
+        if (_currentWaveIndex >= _waves.Length)
+        {
+            print("Wave finished");
+            return;
+        }
+
+        _waves[_currentWaveIndex].SpawnEnemies(SpawnNewWave);
+        _currentWaveIndex++;
     }
 }

@@ -36,6 +36,7 @@ public class EnemyBase : MonoBehaviour
     private Facing _facing;
     private Transform _target;
     private TargetDetection _targetDetection;
+    private Wave _wave;
 
     public CharacterAnimator Animator => _animator;
     public Rigidbody2D Rigidbody2D => _rigidBody2D;
@@ -58,13 +59,14 @@ public class EnemyBase : MonoBehaviour
     public EnemyActionState AttackState { get; private set; }
     public EnemyDeathState DeathState { get; private set; }
 
-    public void Initialize(Transform target = null)
+    public void Initialize(Wave wave, Transform target = null)
     {
         if (target != null && _needTarget)
         {
             _target = target;
         }
 
+        _wave = wave;
         _stateMachine = new EnemyStateMachine(this);
         _facing = new Facing(_body, _defaultFacingDirection);
         _currentStage = Instantiate(_stage.Stages[_stageIndex]);
@@ -80,12 +82,13 @@ public class EnemyBase : MonoBehaviour
         MoveState = new EnemyActionState(_stateMachine, moveData);
         AttackState = new EnemyActionState(_stateMachine, attackData);
         DeathState = new EnemyDeathState(_stateMachine, deathData);
-        _health.Init(_maxHealth);
+        _health.Init(_maxHealth, true);
         _health.OnDamaged += CheckStageTransition;
     }
 
     public void WakeUp()
     {
+        _health.SetImune(false);
         _stateMachine.Start(StartState);
         _health.OnDie += Die;
     }
@@ -136,6 +139,7 @@ public class EnemyBase : MonoBehaviour
 
     private void Die()
     {
+        _wave.CheckEnemies();
         gameObject.SetActive(false);
     }
 
