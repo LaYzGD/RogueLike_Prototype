@@ -3,7 +3,6 @@ using UnityEngine;
 public class DamageCollider : MonoBehaviour
 {
     [SerializeField] private LayerMask _damagableLayer;
-    
 
     private int _damage;
 
@@ -22,6 +21,10 @@ public class DamageCollider : MonoBehaviour
         if (collision.TryGetComponent(out IDamagable damagable))
         {
             damagable.TakeDamage(_damage);
+        }
+        else 
+        {
+            print(collision.gameObject.name);
         }
     }
 }

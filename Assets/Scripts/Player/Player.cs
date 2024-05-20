@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private Combat _combat;
+    [SerializeField] private Health _health;
+    [SerializeField] private ParticleSystem _hitParticles;
     [Header("Data")]
     [SerializeField] private PlayerData _playerData;
     [Header("Variables")]
@@ -58,11 +60,24 @@ public class Player : MonoBehaviour
         LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
         _combat.Initialize(_facing, _inputs);
+        _health.Init(_playerData.MaxHealth, false);
     }
 
     private void OnEnable()
     {
         _stateMachine.Start(IdleState);
+        _health.OnDamaged += Damaged;
+        _health.OnDie += Die;
+    }
+
+    private void Damaged(int healt)
+    {
+        _hitParticles.Play();
+    }
+
+    private void Die()
+    {
+        print("Dead");
     }
 
     private void Update()

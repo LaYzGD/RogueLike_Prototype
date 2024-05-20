@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddcc95063bf1144581f06f94302f4bf, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 10
   <GroundCheckData>k__BackingField: {fileID: 11400000, guid: 5c6a6912c7f69a748a49d990dc937444, type: 2}
   <AirStateData>k__BackingField: {fileID: 11400000, guid: 67d6657688747e94c984cfa4b4f41ba9, type: 2}
   <MoveStateData>k__BackingField: {fileID: 11400000, guid: 8a16040a2cd71eb42aa5dfd490011e1a, type: 2}
   <JumpStateData>k__BackingField: {fileID: 11400000, guid: 786af013e2ba96442852459580e064a8, type: 2}
   <CharacterAnimationsData>k__BackingField: {fileID: 11400000, guid: 304e3a2e7dee7a84d9bcb52e4d9dae02, type: 2}
-  <AttackForwardData>k__BackingField: {fileID: 11400000, guid: f2a4c77f537fdb94ebe17ba08e4c23a2, type: 2}
-  <AttacDownData>k__BackingField: {fileID: 11400000, guid: 223126427a1cfa64aa725468b5c3bb70, type: 2}
