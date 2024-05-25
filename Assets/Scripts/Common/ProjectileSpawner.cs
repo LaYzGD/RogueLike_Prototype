@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -5,6 +6,7 @@ public class ProjectileSpawner : MonoBehaviour
 {
     [SerializeField] private Projectile _projectile;
     [SerializeField] private Transform _spawnPosition;
+
 
     private ProjectileData _projectileData;
     private ObjectPool<Projectile> _pool;

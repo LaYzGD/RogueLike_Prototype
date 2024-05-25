@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: StoneCrabAttacks
   m_EditorClassIdentifier: 
   <DefaultAttacks>k__BackingField:
+  - {fileID: 11400000, guid: a2ee2942f4ff70f429d7fa156068dce5, type: 2}
+  <CloseAttacks>k__BackingField:
+  - {fileID: 11400000, guid: a2ee2942f4ff70f429d7fa156068dce5, type: 2}
+  <DistantAttacks>k__BackingField:
   - {fileID: 11400000, guid: a13cc39cc1c06f64d85a8edd9d19928c, type: 2}
-  <CloseAttacks>k__BackingField: []
-  <DistantAttacks>k__BackingField: []
   <Controller>k__BackingField: {fileID: 22100000, guid: bdb82d201e2870340a6d751683b3734e, type: 2}

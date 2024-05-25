@@ -74,6 +74,7 @@ public class EnemyBase : MonoBehaviour
 
         var idleData = Instantiate(_idleData);
         var moveData = Instantiate(_moveData);
+
         var attackData = Instantiate(_currentStage.DefaultAttacks[UnityEngine.Random.Range(0, _currentStage.DefaultAttacks.Count)]);
         var deathData = Instantiate(_deathData);
 

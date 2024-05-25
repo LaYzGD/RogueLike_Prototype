@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Data/Enemy/MoveState/EnemyMoveStateData", fileName = "MovetateData")]
+[CreateAssetMenu(menuName = "Data/Enemy/MoveState/EnemyMoveStateData", fileName = "MoveData")]
 
 public class EnemyMoveStateData : EnemyStateDataBase 
 {

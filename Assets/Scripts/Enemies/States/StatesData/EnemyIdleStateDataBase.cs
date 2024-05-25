@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyIdleStateDataBase : EnemyStateDataBase
 {
     [SerializeField] private float _timeLeft;
+    [SerializeField] private bool _canDetectTarget = false;
     private float _currentTime;
     public override void EnterLogic()
     {
@@ -14,6 +15,17 @@ public class EnemyIdleStateDataBase : EnemyStateDataBase
 
     public override void UpdateLogic()
     {
+        if (_canDetectTarget)
+        {
+            CheckTarget();
+
+            if (EnemyBase.TargetDetection.CheckFront())
+            {
+                CheckAttackState();
+                return;
+            }
+        }
+
         if (Time.time >= _currentTime + _timeLeft)
         {
             ChangeState();

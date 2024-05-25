@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animationParamName: Attack1
   _isShootingProjectiles: 1
+  _projectileVector: {x: 1, y: 1}
   _projectileData: {fileID: 11400000, guid: 5121f92bcc8d9e44487b86d11c499e6b, type: 2}

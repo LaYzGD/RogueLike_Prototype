@@ -4,6 +4,7 @@ using UnityEngine;
 public class BossAttackOnPlaceData : EnemyStateDataBase
 {
     [SerializeField] private bool _isShootingProjectiles;
+    [SerializeField] private Vector2 _projectileVector;
     [SerializeField] private ProjectileData _projectileData;
     public override void EnterLogic()
     {
@@ -22,7 +23,7 @@ public class BossAttackOnPlaceData : EnemyStateDataBase
     {
         if (_isShootingProjectiles) 
         {
-            EnemyBase.Spawner.SpawnProjectile(new Vector2(EnemyBase.Facing.FacingDirection, 0f), EnemyBase.Body.rotation);
+            EnemyBase.Spawner.SpawnProjectile(new Vector2(_projectileVector.x * EnemyBase.Facing.FacingDirection, _projectileVector.y), EnemyBase.Body.rotation);
         }
         else
         {
