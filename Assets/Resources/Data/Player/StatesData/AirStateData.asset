@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AirStateData
   m_EditorClassIdentifier: 
   <MaxFallVelocity>k__BackingField: 25
-  <FallVelocity>k__BackingField: 0.6
-  <JumpDownwardVelocity>k__BackingField: 0.8
+  <FallVelocity>k__BackingField: 0.4
+  <JumpDownwardVelocity>k__BackingField: 0.6
   <JumpHorizontalSpeed>k__BackingField: 10
