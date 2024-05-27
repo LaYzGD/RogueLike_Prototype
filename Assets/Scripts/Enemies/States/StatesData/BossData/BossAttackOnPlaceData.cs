@@ -14,9 +14,15 @@ public class BossAttackOnPlaceData : EnemyStateDataBase
             EnemyBase.Spawner.Initialize(_projectileData);
         }
 
+        CharacterAnimator.OnAnimationStarted += AnimationStarted;
         CharacterAnimator.OnAnimationTriggered += AnimationTriggerLogic;
         CharacterAnimator.OnAnimationCompleted += AnimationCompletedLogic;
         base.EnterLogic();
+    }
+
+    private void AnimationStarted()
+    {
+        EnemyBase.SetHealthImune(true);
     }
 
     public override void AnimationTriggerLogic()
@@ -33,11 +39,13 @@ public class BossAttackOnPlaceData : EnemyStateDataBase
 
     public override void AnimationCompletedLogic()
     {
+        EnemyBase.SetHealthImune(false);
         ChangeState();
     }
 
     public override void ExitLogic()
     {
+        CharacterAnimator.OnAnimationStarted -= AnimationStarted;
         CharacterAnimator.OnAnimationTriggered -= AnimationTriggerLogic;
         CharacterAnimator.OnAnimationCompleted -= AnimationCompletedLogic;
         base.ExitLogic();
