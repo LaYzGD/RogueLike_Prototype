@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public MoveState MoveState { get; private set; }
     public LandState LandState { get; private set; }
     public JumpState JumpState { get; private set; }
+    public PlayerDashState DashState { get; private set; }
     #endregion
 
     #region Private Fields
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
+        DashState = new PlayerDashState(_stateMachine, _playerData.DashStateData);
         _combat.Initialize(_facing);
         _health.Init(_playerData.MaxHealth, false);
     }

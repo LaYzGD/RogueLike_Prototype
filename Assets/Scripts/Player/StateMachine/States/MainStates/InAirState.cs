@@ -31,6 +31,20 @@ public class InAirState : PlayerState
     public override void DoChecks()
     {
         _isGrounded = _checker.IsGrounded();
+        if (Player.Inputs.IsDash)
+        {
+            if (!Player.DashState.CheckIfCanDash())
+            {
+                return;
+            }
+
+            if (PlayerInputs.HorizontalMovementDirection != _facing.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
+            {
+                _facing.Flip();
+            }
+
+            StateMachine.ChangeState(Player.DashState);
+        }
     }
 
     public override void Update()

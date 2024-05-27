@@ -18,23 +18,32 @@ public abstract class GroundedState : PlayerState
     {
         _isGrounded = _checker.IsGrounded();
 
+        if (Player.Inputs.IsDash)
+        {
+            if (!Player.DashState.CheckIfCanDash())
+            {
+                return;
+            }
+
+            if (PlayerInputs.HorizontalMovementDirection != Player.Facing.FacingDirection && PlayerInputs.HorizontalMovementDirection != 0)
+            {
+                Player.Facing.Flip();
+            }
+
+            StateMachine.ChangeState(Player.DashState);
+        }
     }
 
     public override void Enter()
     {
         base.Enter();
+        Player.DashState.ResetCanDash();
         DoChecks();
     }
 
     public override void Update() 
     {
         DoChecks();
-
-        if (_checker.IsTouchingOneWayPlatform(out OneWayPlatform platform) && PlayerInputs.VerticalMovementDirection < 0)
-        {
-            Debug.Log("OnWay");
-            platform.DropDown();
-        }
 
         if (PlayerInputs.IsJump)
         {

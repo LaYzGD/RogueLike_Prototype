@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public abstract class PlayerState : State
 {
     private PlayerStateMachine _stateMachine;
@@ -14,6 +16,12 @@ public abstract class PlayerState : State
         _player = _stateMachine.Player;
         _playerInputs = _player.Inputs;
         _animator = _player.Animator;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        Debug.Log(this);
     }
 
     public virtual void DoChecks() { }

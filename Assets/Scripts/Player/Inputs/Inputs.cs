@@ -1,18 +1,22 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class Inputs : MonoBehaviour
 {
     [SerializeField] private float _jumpInputHoldTime = 0.2f;
+    [SerializeField] private float _dashInputHoldTime = 0.2f;
     public int VerticalMovementDirection { get; private set; }
     public int HorizontalMovementDirection { get; private set; }
 
     public int HorizontalAttackDirection { get; private set; }
     public int VerticalAttackDirection { get; private set; }
     public bool IsJump { get; private set; }
+    public bool IsDash { get; private set; }
 
 
     private float _jumpStartTime;
+    private float _dashInputStartTime;
 
     private void CheckJumpInputHoldTime()
     {
@@ -22,10 +26,18 @@ public class Inputs : MonoBehaviour
         }
     }
 
+    private void CheckDashInput()
+    {
+        if (Time.time >= _dashInputStartTime + _dashInputHoldTime)
+        {
+            IsDash = false;
+        }
+    }
 
     private void Update()
     {
         CheckJumpInputHoldTime();
+        CheckDashInput();
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -45,6 +57,15 @@ public class Inputs : MonoBehaviour
         }
     }
 
+    public void OnDashInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            IsDash = true;
+            _dashInputStartTime = Time.time;
+        }
+    }
+
     public void OnAttackInput(InputAction.CallbackContext context)
     {
         Vector2 direction = context.ReadValue<Vector2>();
@@ -57,4 +78,6 @@ public class Inputs : MonoBehaviour
     {
         IsJump = false;
     }
+
+    public void UseDashInput() => IsDash = false;
 }
