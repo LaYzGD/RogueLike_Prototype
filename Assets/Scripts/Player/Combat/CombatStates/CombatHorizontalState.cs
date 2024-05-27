@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class CombatHorizontalState : CombatState
 {
@@ -6,18 +7,24 @@ public class CombatHorizontalState : CombatState
     private string _animationParam;
     private bool _canFlip;
     private bool _canChangeState;
-    public CombatHorizontalState(CombatStateMachine combatStateMachine, Action<bool> toggleCombat, Facing facing, string animationParam) : base(combatStateMachine, toggleCombat)
+    private Transform _horizontalCheck;
+    private Transform _verticalCheck;
+    private float _horizontalDistance;
+    private float _verticalDistance;
+    private LayerMask _hitLayer;
+    public CombatHorizontalState(CombatStateMachine combatStateMachine, Facing facing, Action<bool> toggleCombat, string animationParam, Transform horizontalCheck, Transform verticalCheck, CombatData data) : base(combatStateMachine, toggleCombat)
     {
         _facing = facing;
         _animationParam = animationParam;
+        _horizontalCheck = horizontalCheck;
+        _verticalCheck = verticalCheck;
+        _horizontalDistance = data.HorrizontalCheckDistance;
+        _verticalDistance = data.VerticalCheckDistance;
+        _hitLayer = data.LayerMask;
     }
 
     public override void Enter()
     {
-        if (Inputs.HorizontalAttackDirection != _facing.FacingDirection)
-        {
-            _facing.Flip();
-        }
         _canFlip = false;
         _canChangeState = false;
         ToggleHorizontalCombat(true);
@@ -40,12 +47,21 @@ public class CombatHorizontalState : CombatState
 
     public override void Update()
     {
-        if (_canFlip && Inputs.HorizontalAttackDirection != _facing.FacingDirection)
+        RaycastHit2D hit = Physics2D.Raycast(_horizontalCheck.position, new Vector2(_facing.FacingDirection, 0f), _horizontalDistance, _hitLayer);
+
+        if (hit.collider == null)
         {
-            _facing.Flip();
+            if (!_canChangeState)
+            {
+                return;
+            }
+
+            CombatStateMachine.ChangeState(Combat.CombatIdleState);
         }
 
-        if (Inputs.VerticalAttackDirection == 1)
+        RaycastHit2D hitUp = Physics2D.Raycast(_verticalCheck.position, Vector2.up, _verticalDistance, _hitLayer);
+
+        if (hitUp.collider != null)
         {
             if (!_canChangeState)
             {
@@ -53,16 +69,6 @@ public class CombatHorizontalState : CombatState
             }
 
             CombatStateMachine.ChangeState(Combat.CombatUpState);
-            return;
-        }
-
-        if (Inputs.HorizontalAttackDirection == 0)
-        {
-            if (!_canChangeState)
-            {
-                return;
-            }
-            CombatStateMachine.ChangeState(Combat.CombatIdleState);
         }
     }
 

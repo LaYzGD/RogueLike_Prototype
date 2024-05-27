@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
-        _combat.Initialize(_facing, _inputs);
+        _combat.Initialize(_facing);
         _health.Init(_playerData.MaxHealth, false);
     }
 

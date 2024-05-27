@@ -1,13 +1,26 @@
 using System;
+using UnityEngine;
 
 public class CombatUpState : CombatState
 {
     private string _animationParam;
     private bool _canChangeState;
+    private Transform _horizontalCheck;
+    private Transform _verticalCheck;
+    private Facing _facing;
+    private float _horizontalDistance;
+    private float _verticalDistance;
+    private LayerMask _hitLayer;
 
-    public CombatUpState(CombatStateMachine combatStateMachine, Action<bool> toggleCombat, string animationParam) : base(combatStateMachine, toggleCombat)
+    public CombatUpState(CombatStateMachine combatStateMachine, Facing facing, Action<bool> toggleCombat, string animationParam, Transform horizontalCheck, Transform verticalCheck, CombatData data) : base(combatStateMachine, toggleCombat)
     {
         _animationParam = animationParam;
+        _facing = facing;
+        _horizontalCheck = horizontalCheck;
+        _verticalCheck = verticalCheck;
+        _horizontalDistance = data.HorrizontalCheckDistance;
+        _verticalDistance = data.VerticalCheckDistance;
+        _hitLayer = data.LayerMask;
     }
 
     public override void Enter()
@@ -31,7 +44,9 @@ public class CombatUpState : CombatState
 
     public override void Update()
     {
-        if (Inputs.HorizontalAttackDirection != 0)
+        RaycastHit2D hit = Physics2D.Raycast(_horizontalCheck.position, new Vector2(_facing.FacingDirection, 0f), _horizontalDistance, _hitLayer);
+
+        if (hit.collider != null)
         {
             if (!_canChangeState)
             {
@@ -39,10 +54,11 @@ public class CombatUpState : CombatState
             }
 
             CombatStateMachine.ChangeState(Combat.CombatHorizontalState);
-            return;
         }
 
-        if(Inputs.VerticalAttackDirection == 0)
+        RaycastHit2D hitUp = Physics2D.Raycast(_verticalCheck.position, Vector2.up, _verticalDistance, _hitLayer);
+
+        if (hitUp.collider == null)
         {
             if (!_canChangeState)
             {

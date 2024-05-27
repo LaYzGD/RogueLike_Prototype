@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 876fab6e4160c1243b26a2ddac6333b9, type: 3}
   m_Name: CombatData
   m_EditorClassIdentifier: 
+  <HorrizontalCheckDistance>k__BackingField: 1
+  <VerticalCheckDistance>k__BackingField: 1
+  <LayerMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
   <IdleAttackParamName>k__BackingField: isIdle
   <HorizontalAttackParamName>k__BackingField: isHorizontal
   <UpAttackParamName>k__BackingField: isUp

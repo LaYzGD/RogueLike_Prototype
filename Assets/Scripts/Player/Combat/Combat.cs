@@ -3,13 +3,13 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     [SerializeField] private CombatData _data;
+    [SerializeField] private Transform _horizontalCheckOrigin;
+    [SerializeField] private Transform _verticalCheckOrigin;
     [SerializeField] private CharacterAnimator _weaponAnimator;
 
-    private Inputs _inputs;
 
     private bool _isInHorizontalCombat;
 
-    public Inputs Inputs => _inputs;
     public CharacterAnimator WeaponAnimator => _weaponAnimator;
     public bool IsInHorizontalCombat => _isInHorizontalCombat;
 
@@ -18,14 +18,13 @@ public class Combat : MonoBehaviour
     public CombatHorizontalState CombatHorizontalState { get; private set; }
     public CombatUpState CombatUpState { get; private set; }
 
-    public void Initialize(Facing facing, Inputs inputs)
+    public void Initialize(Facing facing)
     {
-        _inputs = inputs;
         _combatStateMachine = new CombatStateMachine(this);
 
-        CombatIdleState = new CombatIdleState(_combatStateMachine, ToggleHorizontalCombatMode, _data.IdleAttackParamName);
-        CombatHorizontalState = new CombatHorizontalState(_combatStateMachine, ToggleHorizontalCombatMode, facing, _data.HorizontalAttackParamName);
-        CombatUpState = new CombatUpState(_combatStateMachine, ToggleHorizontalCombatMode, _data.UpAttackParamName);
+        CombatIdleState = new CombatIdleState(_combatStateMachine, facing, ToggleHorizontalCombatMode, _data.IdleAttackParamName, _horizontalCheckOrigin, _verticalCheckOrigin, _data);
+        CombatHorizontalState = new CombatHorizontalState(_combatStateMachine, facing, ToggleHorizontalCombatMode, _data.HorizontalAttackParamName, _horizontalCheckOrigin, _verticalCheckOrigin, _data);
+        CombatUpState = new CombatUpState(_combatStateMachine, facing, ToggleHorizontalCombatMode, _data.UpAttackParamName, _horizontalCheckOrigin, _verticalCheckOrigin, _data);
 
         _combatStateMachine.Start(CombatIdleState);
     }
