@@ -8565,7 +8565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1298296003}
   _enemies:
-  - {fileID: 0}
+  - {fileID: 2457251365572705123}
 --- !u!4 &645350996
 Transform:
   m_ObjectHideFlags: 0
@@ -23593,7 +23593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1767414004
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25898,7 +25898,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -25951,7 +25951,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 10
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -30956,25 +30956,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startAnimationParam: Start
-  _idleData: {fileID: 11400000, guid: 8fd86db1c4e65c8449b8ec9113f54acb, type: 2}
+  _idleData: {fileID: 11400000, guid: cfd7cf413e749d24daf65eb516f6d6b8, type: 2}
   _moveData: {fileID: 11400000, guid: c8a67c075f5ad7949bb6a271b6a85d73, type: 2}
-  _stage: {fileID: 11400000, guid: 593cf27b048c0db46a3d2817cbccdb65, type: 2}
+  _stage: {fileID: 11400000, guid: 23b0e9bb2c54c7a4489679b0ef330c6c, type: 2}
   _deathData: {fileID: 11400000, guid: 8fd86db1c4e65c8449b8ec9113f54acb, type: 2}
-  _states: 02000000
+  _states: 0000000001000000
   _animator: {fileID: 5576721775524320750}
   _rigidBody2D: {fileID: 4056933579747653719}
-  _body: {fileID: 271698179493781459}
+  _body: {fileID: 1736584257551708308}
   _groundCheck: {fileID: 1775924070772630738}
   _frontCheck: {fileID: 330374571903065590}
   _health: {fileID: 5495761510854403275}
   _projectileSpawner: {fileID: 0}
   _needTarget: 1
-  _maxHealth: 20
-  _healthToChangeStage: 
+  _maxHealth: 100
+  _healthToChangeStage: 32000000
   _defaultFacingDirection: 1
-  _checkCloseThreshold: 3
-  _checkFarThreshold: 3
-  _checkDistance: 3
+  _checkCloseThreshold: 10
+  _checkFarThreshold: 10
+  _checkDistance: 30
   _targetLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -31250,8 +31250,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.4
-      minScalar: 1
+      scalar: 1
+      minScalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -31714,7 +31714,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.0001
+      value: 2
       mode: 0
       spread: 0
       speed:
@@ -36226,7 +36226,7 @@ Transform:
   m_GameObject: {fileID: 5665251572169600632}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.66, z: 0}
+  m_LocalPosition: {x: 0, y: 0.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36274,7 +36274,7 @@ Animator:
   m_GameObject: {fileID: 2556604095574573344}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 7795abfa8a5ecdc47b1dd428735464d6, type: 2}
+  m_Controller: {fileID: 22100000, guid: dc54838bf548d0147bd89342398e35ba, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -36540,7 +36540,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.1
-      minScalar: 0.25
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:

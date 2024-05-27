@@ -8,6 +8,7 @@ public class EnemyStartState : EnemyState
 
     public override void Enter()
     {
+        EnemyBase.SetHealthImune(true);
         Animator.OnAnimationCompleted += ChangeState;
         Animator.ChangeAnimationState(_animationParam, true);
         EnemyBase.Rigidbody2D.isKinematic = false;
@@ -33,6 +34,7 @@ public class EnemyStartState : EnemyState
     public override void Exit()
     {
         Animator.OnAnimationCompleted -= ChangeState;
+        EnemyBase.SetHealthImune(false);
         Animator.ChangeAnimationState(_animationParam, false);
     }
 }

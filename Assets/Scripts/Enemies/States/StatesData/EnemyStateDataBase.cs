@@ -46,6 +46,13 @@ public class EnemyStateDataBase : ScriptableObject
     public virtual void ChangeState()
     {
         var nextState = EnemyBase.GetNextState();
+        
+        if (EnemyBase.IsTransitioning)
+        {
+            EnemyBase.SetNewAnimations();
+            return;
+        }
+
         switch (nextState)
         {
             case EnemyStateType.Attack:
@@ -62,6 +69,17 @@ public class EnemyStateDataBase : ScriptableObject
 
     public virtual void CheckAttackState()
     {
+        if (EnemyBase.Attacks.IsDefaultAttacksInOrder)
+        {
+            EnemyBase.SetNewAttackData(EnemyBase.Attacks.DefaultAttacks[EnemyBase.AttackIndex]);
+            EnemyBase.AttackIndex++;
+            if (EnemyBase.AttackIndex >= EnemyBase.Attacks.DefaultAttacks.Count)
+            {
+                EnemyBase.AttackIndex = 0;
+            }
+            return;
+        }
+
         if (CheckTargetClose())
         {
             if (EnemyBase.Attacks.CloseAttacks.Count > 0)

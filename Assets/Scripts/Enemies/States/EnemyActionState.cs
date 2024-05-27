@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EnemyActionState : EnemyState
 {
     private EnemyStateDataBase _data;

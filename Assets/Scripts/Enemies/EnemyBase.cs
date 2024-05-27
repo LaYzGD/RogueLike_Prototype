@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -37,7 +38,12 @@ public class EnemyBase : MonoBehaviour
     private Transform _target;
     private TargetDetection _targetDetection;
     private Wave _wave;
+    private int _attackIndex;
 
+    private bool _isTransitioning;
+
+    public bool IsTransitioning => _isTransitioning;
+    public int AttackIndex { get => _attackIndex; set => _attackIndex = value; }
     public CharacterAnimator Animator => _animator;
     public Rigidbody2D Rigidbody2D => _rigidBody2D;
     public EnemyStateType[] States => _states;
@@ -89,9 +95,13 @@ public class EnemyBase : MonoBehaviour
 
     public void WakeUp()
     {
-        _health.SetImune(false);
         _stateMachine.Start(StartState);
         _health.OnDie += Die;
+    }
+
+    public void SetHealthImune(bool value)
+    {
+        _health.SetImune(value);
     }
 
     private void Update()
@@ -132,9 +142,17 @@ public class EnemyBase : MonoBehaviour
 
         _stageIndex++;
         _currentStage = Instantiate(_stage.Stages[_stageIndex]);
+        _isTransitioning = true;
+    }
+
+    public void SetNewAnimations()
+    {
         if (_currentStage.Controller != null)
         {
             _animator.SetController(_currentStage.Controller);
+            _stateMachine.ChangeState(StartState);
+            _index = 0;
+            _isTransitioning = false;
         }
     }
 

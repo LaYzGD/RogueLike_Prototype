@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a7573925812b044af670d04bf2b4e1, type: 3}
+  m_Name: SamuraiFrog_Stage2
+  m_EditorClassIdentifier: 
+  <DefaultAttacks>k__BackingField:
+  - {fileID: 11400000, guid: 1a0845c8d7841684e906c7db7e67e93e, type: 2}
+  - {fileID: 11400000, guid: a2ee2942f4ff70f429d7fa156068dce5, type: 2}
+  <CloseAttacks>k__BackingField:
+  - {fileID: 11400000, guid: 1a0845c8d7841684e906c7db7e67e93e, type: 2}
+  <DistantAttacks>k__BackingField:
+  - {fileID: 11400000, guid: a2ee2942f4ff70f429d7fa156068dce5, type: 2}
+  <IsDefaultAttacksInOrder>k__BackingField: 0
+  <Controller>k__BackingField: {fileID: 22100000, guid: a55696e7995e1f54d88acd53c1332ab7, type: 2}
