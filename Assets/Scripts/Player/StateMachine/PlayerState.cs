@@ -18,11 +18,5 @@ public abstract class PlayerState : State
         _animator = _player.Animator;
     }
 
-    public override void Enter()
-    {
-        base.Enter();
-        Debug.Log(this);
-    }
-
     public virtual void DoChecks() { }
 }
