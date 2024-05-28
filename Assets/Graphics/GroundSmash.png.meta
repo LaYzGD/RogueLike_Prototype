@@ -1,0 +1,361 @@
+fileFormatVersion: 2
+guid: 366e0d4639be0a542a24eeca42c6f61b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GroundSmash_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 1466
+        width: 835
+        height: 514
+      alignment: 9
+      pivot: {x: 0.52319324, y: 0.038445737}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a72eed3b34f204a95e00c784ee332e
+      internalID: 1341057381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSmash_2
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 1618
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e87c5f2dda6c88642acfd6a53637d442
+      internalID: -556067270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSmash_3
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 1472
+        width: 974
+        height: 323
+      alignment: 9
+      pivot: {x: 0.5074563, y: 0.042820226}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d36bb7968aeeb524eaba13ae478b3589
+      internalID: -2146787645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSmash_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 891
+        width: 1127
+        height: 365
+      alignment: 9
+      pivot: {x: 0.5343682, y: 0.049000863}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c48c7a575fcac84b9912d25dae05594
+      internalID: 763211559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSmash_21
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 494
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc55d2b60c8edb542a6dc9e0a4e4a40f
+      internalID: 677454524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSmash_31
+      rect:
+        serializedVersion: 2
+        x: 1159
+        y: 344
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa7613959fb187438ee2f4a4d5f9624
+      internalID: 679896396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSmash_32
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 346
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd250a58a16b352498ba28c77a232a4a
+      internalID: 1141294735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GroundSmash_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 162
+        width: 1399
+        height: 455
+      alignment: 9
+      pivot: {x: 0.536338, y: 0.031800356}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 498c80ecddb1745409701e17bfef8fd8
+      internalID: 1337439466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GroundSmash_0: 1341057381
+      GroundSmash_1: 1337439466
+      GroundSmash_10: -1529196940
+      GroundSmash_11: 1575801680
+      GroundSmash_12: 1527836408
+      GroundSmash_13: 666269147
+      GroundSmash_14: -1877944839
+      GroundSmash_15: -1224402479
+      GroundSmash_16: -1427219004
+      GroundSmash_17: 1143645056
+      GroundSmash_18: -368121183
+      GroundSmash_19: -731826988
+      GroundSmash_2: -556067270
+      GroundSmash_20: 315385896
+      GroundSmash_21: 677454524
+      GroundSmash_22: 678273489
+      GroundSmash_23: -1269479803
+      GroundSmash_24: 1264453457
+      GroundSmash_25: -316765420
+      GroundSmash_26: 1209320727
+      GroundSmash_27: 251102071
+      GroundSmash_28: -2071230758
+      GroundSmash_29: 209770516
+      GroundSmash_3: -2146787645
+      GroundSmash_30: -1248810184
+      GroundSmash_31: 679896396
+      GroundSmash_32: 1141294735
+      GroundSmash_33: 2028594803
+      GroundSmash_34: 959085706
+      GroundSmash_35: 638951277
+      GroundSmash_36: -924648262
+      GroundSmash_37: -1381730294
+      GroundSmash_38: 1757819387
+      GroundSmash_39: 1609988221
+      GroundSmash_4: 1059384267
+      GroundSmash_5: 535800503
+      GroundSmash_6: 964751993
+      GroundSmash_7: 205876237
+      GroundSmash_8: 1657494133
+      GroundSmash_9: 763211559
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
