@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
         _health.OnDie += Die;
     }
 
-    private void Damaged(int healt)
+    private void Damaged(int health, Vector2 direction)
     {
         _hitParticles.Play();
     }

@@ -120,7 +120,7 @@ public class EnemyBase : MonoBehaviour
         AttackState = new EnemyActionState(_stateMachine, newAttackData);
     }
 
-    private void CheckStageTransition(int currentHealth)
+    private void CheckStageTransition(int currentHealth, Vector2 direction)
     {
         if (_stageIndex >= _healthToChangeStage.Length)
         {

@@ -20,7 +20,8 @@ public class DamageCollider : MonoBehaviour
 
         if (collision.TryGetComponent(out IDamagable damagable))
         {
-            damagable.TakeDamage(_damage);
+            Vector2 direction = collision.transform.position - transform.position;
+            damagable.TakeDamage(_damage, direction.normalized);
         }
         else 
         {

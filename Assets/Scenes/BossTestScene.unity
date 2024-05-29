@@ -211,7 +211,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6661,6 +6661,7 @@ MonoBehaviour:
   _audioSource: {fileID: 244116846}
   _musicSource: {fileID: 0}
   _minimumPitch: 0.7
+  _maximumPitch: 0.7
   _randomSounds: []
   _animationParticles: []
   _particleSpawnPosition: {fileID: 0}
@@ -7047,7 +7048,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7156,7 +7157,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10381,7 +10382,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11188,7 +11189,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17832,6 +17833,7 @@ MonoBehaviour:
   _audioSource: {fileID: 1494541075}
   _musicSource: {fileID: 0}
   _minimumPitch: 0.7
+  _maximumPitch: 0.7
   _randomSounds:
   - {fileID: 8300000, guid: 93337768c3cbd254ebe63cd8432e3063, type: 3}
   - {fileID: 8300000, guid: dde33b0f6c005a5449a429ed5fc6d99d, type: 3}
@@ -28423,7 +28425,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -30621,7 +30623,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -41372,6 +41374,7 @@ GameObject:
   - component: {fileID: 271698179493781459}
   - component: {fileID: 3516135888255512612}
   - component: {fileID: 5495761510854403275}
+  - component: {fileID: 5495761510854403276}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -41391,6 +41394,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db435b33062775341946396b7c57bc6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5495761510854403276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5337493413678289977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ac28094a198e247823bbc29ddc2947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorReferenceNameID: _FlashColor
+  _floatReferenceNameID: _FlashAmount
+  _flashTime: 0.2
+  _maxFlashAmount: 1
+  _minFlashAmount: 0
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _sprites:
+  - {fileID: 387266014}
+  - {fileID: 19693855}
+  - {fileID: 1089741182}
+  - {fileID: 358472715}
+  - {fileID: 2101850850}
+  - {fileID: 927696389}
+  - {fileID: 1631038986}
+  _health: {fileID: 5495761510854403275}
 --- !u!114 &5576721775524320750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41734,6 +41764,7 @@ MonoBehaviour:
   _audioSource: {fileID: 7572485463209460551}
   _musicSource: {fileID: 7572485463209460552}
   _minimumPitch: 0.7
+  _maximumPitch: 0.7
   _randomSounds: []
   _animationParticles:
   - {fileID: 8299506815276757306}

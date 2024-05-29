@@ -28,10 +28,8 @@ public class AnimationEffects : MonoBehaviour
 
     public void PlayRandomSound()
     {
-        var startingPitch = _audioSource.pitch;
         _audioSource.pitch = Random.Range(_minimumPitch, _maximumPitch);
         _audioSource.PlayOneShot(_randomSounds[Random.Range(0, _randomSounds.Length)]);
-        _audioSource.pitch = startingPitch;
     }
     public void PlayDrums()
     {

@@ -29,7 +29,7 @@ public class EnemyDamageFlashEffect : MonoBehaviour
         _health.OnDamaged += AplyFlashEffect;
     }
 
-    private void AplyFlashEffect(int currentHealth)
+    private void AplyFlashEffect(int currentHealth, Vector2 direction)
     {
         StartCoroutine(FlashEffect());
     }

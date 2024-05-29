@@ -866,7 +866,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -973,7 +973,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1036,9 +1036,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     startSize:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 5
-      minScalar: 2
+      minMaxState: 0
+      scalar: 15
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1089,7 +1089,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeY:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -1142,7 +1142,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 3
+      minMaxState: 0
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -1946,7 +1946,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   RotationModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -2117,8 +2117,8 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key1: {r: 1, g: 1, b: 1, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0.09803922}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -2133,8 +2133,8 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 44333
+        atime2: 65535
         atime3: 0
         atime4: 0
         atime5: 0
@@ -2143,7 +2143,7 @@ ParticleSystem:
         m_Mode: 0
         m_ColorSpace: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 3
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -2295,7 +2295,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 91871688de6573749ac30440bb819588, type: 3}
+    - sprite: {fileID: 21300000, guid: 1baffe2add524f34a97e66c7c26b4ad2, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -6821,7 +6821,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -11499,8 +11499,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 94779719}
   - {fileID: 448418724}
+  - {fileID: 94779719}
   m_Father: {fileID: 1015721527}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &272770587
@@ -13485,29 +13485,20 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -0.5408535
-          outSlope: -0.5408535
+          inSlope: -1
+          outSlope: -1
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.33333334
+          outWeight: 0
         - serializedVersion: 3
-          time: 0.46103334
-          value: 0.7506485
-          inSlope: -0.38035876
-          outSlope: -0.38035876
+          time: 1
+          value: 0
+          inSlope: -1
+          outSlope: -1
           tangentMode: 34
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 0.99264526
-          value: 0.6337662
-          inSlope: -0.219864
-          outSlope: -0.219864
-          tangentMode: 34
-          weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -13993,9 +13984,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 314336635, guid: 4c42c9b47728e1249a8cfb53863a5bc4, type: 3}
-    - sprite: {fileID: 547893947, guid: 4c42c9b47728e1249a8cfb53863a5bc4, type: 3}
-    - sprite: {fileID: 1363524167, guid: 4c42c9b47728e1249a8cfb53863a5bc4, type: 3}
+    - sprite: {fileID: 21300000, guid: 450aa39f75d285745a2908d4ba1d9e11, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -17315,8 +17304,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -3.9628496, y: 7.6874504, z: 0}
-    m_Extent: {x: 16.279549, y: 26.40345, z: 0}
+    m_Center: {x: -3.9652495, y: 7.6848, z: 0}
+    m_Extent: {x: 16.28085, y: 26.406502, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -18202,8 +18191,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -9.84855, y: 9.59855, z: 0}
-    m_Extent: {x: 15.37045, y: 21.529251, z: 0}
+    m_Center: {x: -9.84065, y: 9.59625, z: 0}
+    m_Extent: {x: 15.372149, y: 21.52325, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -20138,8 +20127,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -3.0092502, y: 9.15505, z: 0}
-    m_Extent: {x: 12.87505, y: 21.96695, z: 0}
+    m_Center: {x: -3.01045, y: 9.151449, z: 0}
+    m_Extent: {x: 12.87245, y: 21.97895, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -22135,10 +22124,7 @@ MonoBehaviour:
   _player: {fileID: 801739007}
   _collider: {fileID: 1830831115}
   _waves:
-  - {fileID: 82033215}
-  - {fileID: 98273008}
   - {fileID: 354646699}
-  - {fileID: 188231139}
 --- !u!61 &1830831115
 BoxCollider2D:
   m_ObjectHideFlags: 0

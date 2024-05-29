@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
 
         if (collision.TryGetComponent(out IDamagable damagable))
         {
-            damagable.TakeDamage(_damage);
+            damagable.TakeDamage(_damage, _movementDirection.normalized);
         }
 
         _animator.ChangeAnimationState(_despawnAnimation);
