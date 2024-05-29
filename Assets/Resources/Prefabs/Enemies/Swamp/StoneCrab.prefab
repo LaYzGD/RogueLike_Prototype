@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -361,7 +361,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -466,7 +466,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -585,7 +585,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10574,6 +10574,7 @@ GameObject:
   - component: {fileID: 1905902558689609617}
   - component: {fileID: 1993306865245683167}
   - component: {fileID: 7791958988161602608}
+  - component: {fileID: 1280105338304204247}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -10658,6 +10659,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db435b33062775341946396b7c57bc6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1280105338304204247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3357939758321266039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ac28094a198e247823bbc29ddc2947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colorReferenceNameID: _FlashColor
+  _floatReferenceNameID: _FlashAmount
+  _flashTime: 0.2
+  _maxFlashAmount: 1
+  _minFlashAmount: 0
+  _flashColor: {r: 1, g: 1, b: 1, a: 1}
+  _sprites:
+  - {fileID: 7085369897947771652}
+  - {fileID: 8663595786642868501}
+  - {fileID: 7193132566532870978}
+  - {fileID: 6613329626808028643}
+  - {fileID: 1461405778532135117}
+  - {fileID: 8877476831804651607}
+  - {fileID: 4626871333139136828}
+  _health: {fileID: 7791958988161602608}
 --- !u!1 &4026436849931260130
 GameObject:
   m_ObjectHideFlags: 0
@@ -15631,7 +15659,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20972,7 +21000,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21089,7 +21117,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: ead82056ff0a545449fffa380f5edafa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

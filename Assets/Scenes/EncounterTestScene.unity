@@ -609,7 +609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &82033214
 Transform:
   m_ObjectHideFlags: 0
@@ -5580,7 +5580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &98273007
 Transform:
   m_ObjectHideFlags: 0
@@ -6072,7 +6072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &188231138
 Transform:
   m_ObjectHideFlags: 0
@@ -17315,8 +17315,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -3.9612498, y: 7.680499, z: 0}
-    m_Extent: {x: 16.29015, y: 26.404598, z: 0}
+    m_Center: {x: -3.9628496, y: 7.6874504, z: 0}
+    m_Extent: {x: 16.279549, y: 26.40345, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -18202,8 +18202,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -9.849151, y: 9.60625, z: 0}
-    m_Extent: {x: 15.37325, y: 21.51995, z: 0}
+    m_Center: {x: -9.84855, y: 9.59855, z: 0}
+    m_Extent: {x: 15.37045, y: 21.529251, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -20138,8 +20138,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -2.9984503, y: 9.1525, z: 0}
-    m_Extent: {x: 12.87605, y: 21.9735, z: 0}
+    m_Center: {x: -3.0092502, y: 9.15505, z: 0}
+    m_Extent: {x: 12.87505, y: 21.96695, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -22135,7 +22135,10 @@ MonoBehaviour:
   _player: {fileID: 801739007}
   _collider: {fileID: 1830831115}
   _waves:
+  - {fileID: 82033215}
   - {fileID: 98273008}
+  - {fileID: 354646699}
+  - {fileID: 188231139}
 --- !u!61 &1830831115
 BoxCollider2D:
   m_ObjectHideFlags: 0
