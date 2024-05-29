@@ -8,6 +8,7 @@ public class Health : MonoBehaviour, IDamagable
     private int _currentHealth;
     private bool _isImune;
 
+    public event Action<int> OnInitialized;
     public event Action<int, Vector2> OnDamaged;
     public event Action OnDie;
 
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour, IDamagable
         _isImune = isImune;
         _maxHealth = maxHealth;
         _currentHealth = _maxHealth;
+        OnInitialized?.Invoke(_currentHealth);
     }
 
     public void TakeDamage(int damage, Vector2 direction)
