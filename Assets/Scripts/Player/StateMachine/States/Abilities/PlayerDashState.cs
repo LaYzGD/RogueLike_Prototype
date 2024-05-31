@@ -8,10 +8,11 @@ public class PlayerDashState : AbilityState
     private float _lastDashTime;
     private float _startGravityScale;
     private DashStateData _data;
-
-    public PlayerDashState(PlayerStateMachine stateMachine, DashStateData data) : base(stateMachine)
+    private ParticleSystem[] _dashParticles;
+    public PlayerDashState(PlayerStateMachine stateMachine, DashStateData data, ParticleSystem[] dashParticles) : base(stateMachine)
     {
         _data = data;
+        _dashParticles = dashParticles;
     }
 
     public override void Enter()
@@ -20,6 +21,11 @@ public class PlayerDashState : AbilityState
         CanDash = false;
         Player.Animator.ChangeAnimationState(_data.DashAnimationParameter, true);
         Player.Inputs.UseDashInput();
+        foreach (var particle in _dashParticles) 
+        {
+            particle.transform.localScale = new Vector3(Player.Facing.FacingDirection, particle.transform.localScale.y, particle.transform.localScale.z);
+            particle.Play();
+        }
         _startTime = Time.time;
         _startGravityScale = Player.Rigidbody2D.gravityScale;
         Player.Rigidbody2D.gravityScale = 0f;
