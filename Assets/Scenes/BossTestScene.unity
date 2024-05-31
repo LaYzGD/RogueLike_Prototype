@@ -35658,6 +35658,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3106868991835934669, guid: 3014f4bbf761be64bb60bf8e12724615, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3106868991835934669, guid: 3014f4bbf761be64bb60bf8e12724615, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5333182857627797024, guid: 3014f4bbf761be64bb60bf8e12724615, type: 3}
       propertyPath: m_Name
       value: PlayerTest
