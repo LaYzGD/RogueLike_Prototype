@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class PlayerDashState : AbilityState
 {
@@ -9,10 +10,13 @@ public class PlayerDashState : AbilityState
     private float _startGravityScale;
     private DashStateData _data;
     private ParticleSystem[] _dashParticles;
-    public PlayerDashState(PlayerStateMachine stateMachine, DashStateData data, ParticleSystem[] dashParticles) : base(stateMachine)
+    private Action _createParticlesAction;
+
+    public PlayerDashState(PlayerStateMachine stateMachine, DashStateData data, ParticleSystem[] dashParticles, Action createParticles) : base(stateMachine)
     {
         _data = data;
         _dashParticles = dashParticles;
+        _createParticlesAction = createParticles;
     }
 
     public override void Enter()
@@ -27,6 +31,13 @@ public class PlayerDashState : AbilityState
             particle.Play();
         }
         _startTime = Time.time;
+
+        if (Player.Checker.IsGrounded())
+        {
+            _createParticlesAction();
+        }
+
+        Player.Sounds.PlayAbilitySound(_data.DashSound);
         _startGravityScale = Player.Rigidbody2D.gravityScale;
         Player.Rigidbody2D.gravityScale = 0f;
     }

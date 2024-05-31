@@ -8,12 +8,18 @@ public class AnimationEffects : MonoBehaviour
     [SerializeField] private float _maximumPitch = 0.7f;
     [SerializeField] private AudioClip[] _randomSounds;
     [SerializeField] private ParticleSystem[] _animationParticles;
+    [SerializeField] private GameObject _particles;
     [SerializeField] private Transform _particleSpawnPosition;
 
     public void PlayParticles(int index)
     {
         _animationParticles[index].transform.position = _particleSpawnPosition.position;
         _animationParticles[index].Play();
+    }
+
+    public void SpawnParticles()
+    {
+        Instantiate(_particles, _particleSpawnPosition.position, Quaternion.identity);
     }
 
     public void StopParticles(int index)

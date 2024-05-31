@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: JumpStateData
   m_EditorClassIdentifier: 
   <JumpForce>k__BackingField: 23
+  <JumpSound>k__BackingField: {fileID: 8300000, guid: 740aef91443075d419186ab50931ac77, type: 3}

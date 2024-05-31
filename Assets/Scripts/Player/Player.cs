@@ -10,10 +10,16 @@ public class Player : MonoBehaviour
     [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private Combat _combat;
     [SerializeField] private Health _health;
+    [SerializeField] private PlayerSounds _sounds;
     [SerializeField] private ParticleSystem _hitParticles;
     [SerializeField] private ParticleSystem[] _dashParticles;
+    [SerializeField] private ParticleSystem[] _jumpParticles;
+    [Space]
+    [SerializeField] private GameObject _dustParticles;
+    [SerializeField] private Transform _dustParticlesSpawn;
     [Header("Data")]
     [SerializeField] private PlayerData _playerData;
+    [SerializeField] private AudioClip _hitSound;
     [Header("Variables")]
     [SerializeField] private int _facingDirection = 1;
     #endregion
@@ -40,6 +46,7 @@ public class Player : MonoBehaviour
     public CharacterAnimator Animator => _characterAnimator;
     public Combat Combat => _combat;
     public Facing Facing => _facing;
+    public PlayerSounds Sounds => _sounds;
     #endregion
 
     private void Awake()
@@ -60,8 +67,8 @@ public class Player : MonoBehaviour
                                   _facing,
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine);
-        JumpState = new JumpState(_stateMachine, _playerData.JumpStateData);
-        DashState = new PlayerDashState(_stateMachine, _playerData.DashStateData, _dashParticles);
+        JumpState = new JumpState(_stateMachine, _playerData.JumpStateData, _jumpParticles, CreateDustParticles);
+        DashState = new PlayerDashState(_stateMachine, _playerData.DashStateData, _dashParticles, CreateDustParticles);
         _combat.Initialize(_facing);
         _health.Init(_playerData.MaxHealth, false);
     }
@@ -76,6 +83,7 @@ public class Player : MonoBehaviour
     private void Damaged(int health, Vector2 direction)
     {
         _hitParticles.Play();
+        _sounds.PlayHitSound(_hitSound);
     }
 
     private void Die()
@@ -92,5 +100,10 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _stateMachine.FixedUpdate();
+    }
+
+    private void CreateDustParticles()
+    {
+        Instantiate(_dustParticles, _dustParticlesSpawn.position, Quaternion.identity);
     }
 }

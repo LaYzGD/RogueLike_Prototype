@@ -16,3 +16,4 @@ MonoBehaviour:
   <DashCooldown>k__BackingField: 1
   <DashTime>k__BackingField: 0.15
   <DashAnimationParameter>k__BackingField: inAir
+  <DashSound>k__BackingField: {fileID: 8300000, guid: e159362b4ee4d1c47b4da24b05d473af, type: 3}
