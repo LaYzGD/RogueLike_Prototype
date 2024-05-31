@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -82,8 +83,10 @@ public class Player : MonoBehaviour
 
     private void Damaged(int health, Vector2 direction)
     {
+        _health.SetImune(true);
         _hitParticles.Play();
         _sounds.PlayHitSound(_hitSound);
+        StartCoroutine(ImunityFrames());
     }
 
     private void Die()
@@ -105,5 +108,11 @@ public class Player : MonoBehaviour
     private void CreateDustParticles()
     {
         Instantiate(_dustParticles, _dustParticlesSpawn.position, Quaternion.identity);
+    }
+
+    private IEnumerator ImunityFrames()
+    {
+        yield return new WaitForSecondsRealtime(_playerData.ImunityFramesTime);
+        _health.SetImune(false);
     }
 }
