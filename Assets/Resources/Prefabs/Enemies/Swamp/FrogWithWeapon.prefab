@@ -15496,7 +15496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageCollider: {fileID: 1584028870934121910}
-  _damage: 3
+  _damage: 1
 --- !u!1 &4621567471193016415
 GameObject:
   m_ObjectHideFlags: 0
