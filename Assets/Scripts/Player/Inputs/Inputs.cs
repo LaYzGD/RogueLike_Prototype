@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class Inputs : MonoBehaviour
 {
     [SerializeField] private float _jumpInputHoldTime = 0.2f;
     [SerializeField] private float _dashInputHoldTime = 0.2f;
+    [SerializeField] private GameObject _settingsView;
     public int VerticalMovementDirection { get; private set; }
     public int HorizontalMovementDirection { get; private set; }
 
@@ -46,6 +46,14 @@ public class Inputs : MonoBehaviour
 
         HorizontalMovementDirection = Mathf.RoundToInt(direction.x);
         VerticalMovementDirection = Mathf.RoundToInt(direction.y);
+    }
+
+    public void OnPauseInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _settingsView.SetActive(true);
+        }
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
