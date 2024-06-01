@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Plant_Swamp
+  m_Controller: {fileID: 9100000, guid: d0c6e2141253fee48883a8017c50128e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 28292242c7c2f284d8582942ccc9a284, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c4291f557d15d2c48a6451790daab63c, type: 2}

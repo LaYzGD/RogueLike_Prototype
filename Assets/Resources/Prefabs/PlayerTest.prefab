@@ -399,7 +399,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 7
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &4963989229321322463
 MonoBehaviour:
@@ -12474,6 +12474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mixer: {fileID: 24100000, guid: 7a8c925b00b3c1647bd48f559a1c1b2d, type: 2}
+  _volumeNormalizer: 20
   _master: masterVolume
   _enemies: enemiesVolume
   _player: playerVolume
