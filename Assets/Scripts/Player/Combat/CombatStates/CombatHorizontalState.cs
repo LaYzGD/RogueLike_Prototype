@@ -5,7 +5,7 @@ public class CombatHorizontalState : CombatState
 {
     private Facing _facing;
     private string _animationParam;
-    private bool _canFlip;
+    //private bool _canFlip;
     private bool _canChangeState;
     private Transform _horizontalCheck;
     private Transform _verticalCheck;
@@ -25,7 +25,7 @@ public class CombatHorizontalState : CombatState
 
     public override void Enter()
     {
-        _canFlip = false;
+        //_canFlip = false;
         _canChangeState = false;
         ToggleHorizontalCombat(true);
         Combat.WeaponAnimator.OnAnimationStarted += SetInAttack;
@@ -35,13 +35,13 @@ public class CombatHorizontalState : CombatState
 
     private void SetIdle()
     {
-        _canFlip = true;
+        //_canFlip = true;
         _canChangeState = true;
     }
 
     private void SetInAttack()
     {
-        _canFlip = false;
+       // _canFlip = false;
         _canChangeState = false;
     }
 

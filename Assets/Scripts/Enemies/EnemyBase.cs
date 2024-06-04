@@ -19,6 +19,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Transform _frontCheck;
     [SerializeField] private Health _health;
     [SerializeField] private ProjectileSpawner _projectileSpawner;
+    [SerializeField] private HealthUI _healthUI;
     [Header("Data")]
     [SerializeField] private bool _needTarget = false;
     [SerializeField] private int _maxHealth;
@@ -70,6 +71,11 @@ public class EnemyBase : MonoBehaviour
         if (target != null && _needTarget)
         {
             _target = target;
+        }
+
+        if (_healthUI != null)
+        {
+            _healthUI.Init(_health);
         }
 
         _wave = wave;

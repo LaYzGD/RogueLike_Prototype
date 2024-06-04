@@ -4,10 +4,12 @@ using UnityEngine.UI;
 public class HealthUI : MonoBehaviour
 {
     [SerializeField] private Slider _healthSlider;
-    [SerializeField] private Health _health;
+    
+    private Health _health;
 
-    private void OnEnable()
+    public void Init(Health health)
     {
+        _health = health;
         _health.OnInitialized += SetUpSlider;
         _health.OnDamaged += UpdateSlider;
     }
@@ -15,6 +17,8 @@ public class HealthUI : MonoBehaviour
     private void SetUpSlider(int currentHealth)
     {
         _healthSlider.maxValue = currentHealth;
+        Debug.Log(_healthSlider.maxValue);
+        Debug.Log(currentHealth);
         _healthSlider.value = currentHealth;
     }
 

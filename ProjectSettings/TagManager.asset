@@ -59,6 +59,36 @@ TagManager:
   - name: Enemy
     uniqueID: 1300981385
     locked: 0
+  - name: Enemy_1
+    uniqueID: 180026269
+    locked: 0
+  - name: Enemy_2
+    uniqueID: 2991550635
+    locked: 0
+  - name: Enemy_3
+    uniqueID: 3037526173
+    locked: 0
+  - name: Enemy_4
+    uniqueID: 2127574767
+    locked: 0
+  - name: Enemy_5
+    uniqueID: 3287839225
+    locked: 0
+  - name: Enemy_6
+    uniqueID: 4258656735
+    locked: 0
+  - name: Enemy_7
+    uniqueID: 4091711297
+    locked: 0
+  - name: Enemy_8
+    uniqueID: 1929819975
+    locked: 0
+  - name: Enemy_9
+    uniqueID: 2030792331
+    locked: 0
+  - name: Enemy_10
+    uniqueID: 3991290323
+    locked: 0
   - name: Player
     uniqueID: 4045427517
     locked: 0
@@ -73,4 +103,7 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 947507639
+    locked: 0
+  - name: FrontLayer
+    uniqueID: 2207259981
     locked: 0

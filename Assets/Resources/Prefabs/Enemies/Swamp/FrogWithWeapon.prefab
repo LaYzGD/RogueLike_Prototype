@@ -5210,7 +5210,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10310,7 +10310,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 3
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -15207,7 +15207,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 2
   m_RenderMode: 1
   m_MeshDistribution: 0
@@ -16295,7 +16295,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 0
   m_Sprite: {fileID: 85134831, guid: e23aab8fe2e2419469fa7db8c4678c1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -16643,7 +16643,7 @@ MonoBehaviour:
   _health: {fileID: 7822562411323765714}
   _projectileSpawner: {fileID: 0}
   _needTarget: 1
-  _maxHealth: 20
+  _maxHealth: 6
   _healthToChangeStage: 
   _defaultFacingDirection: 1
   _checkCloseThreshold: 3
@@ -21617,7 +21617,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 2
   m_RenderMode: 0
   m_MeshDistribution: 0

@@ -10783,6 +10783,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.95
+    functionName: PlayDrums
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 2.05
     functionName: PlaySound
     data: 
@@ -10801,13 +10808,6 @@ AnimationClip:
     functionName: PlaySound
     data: 
     objectReferenceParameter: {fileID: 8300000, guid: 6fdccbdb217c31f4b9aa799070311d44, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 5.383333
-    functionName: PlayDrums
-    data: 
-    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

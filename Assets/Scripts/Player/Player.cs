@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private Combat _combat;
     [SerializeField] private Health _health;
+    [SerializeField] private HealthUI _healthUI;
     [SerializeField] private PlayerSounds _sounds;
     [SerializeField] private ParticleSystem _hitParticles;
     [SerializeField] private ParticleSystem[] _dashParticles;
@@ -71,6 +72,7 @@ public class Player : MonoBehaviour
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData, _jumpParticles, CreateDustParticles);
         DashState = new PlayerDashState(_stateMachine, _playerData.DashStateData, _dashParticles, CreateDustParticles);
         _combat.Initialize(_facing);
+        _healthUI.Init(_health);
         _health.Init(_playerData.MaxHealth, false);
     }
 
