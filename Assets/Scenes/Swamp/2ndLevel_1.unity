@@ -6906,8 +6906,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -3.9644003, y: 7.6847506, z: 0}
-    m_Extent: {x: 16.279701, y: 26.40245, z: 0}
+    m_Center: {x: -3.96945, y: 7.6737003, z: 0}
+    m_Extent: {x: 16.28565, y: 26.406801, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -7003,8 +7003,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -3.0017, y: 9.15765, z: 0}
-    m_Extent: {x: 12.871901, y: 21.96895, z: 0}
+    m_Center: {x: -3.00835, y: 9.1542, z: 0}
+    m_Extent: {x: 12.87005, y: 21.9811, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -10820,6 +10820,7 @@ GameObject:
   - component: {fileID: 1385293529}
   - component: {fileID: 1385293528}
   - component: {fileID: 1385293527}
+  - component: {fileID: 1385293530}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -10890,6 +10891,7 @@ MonoBehaviour:
   - {fileID: 1651929896}
   - {fileID: 1149085760}
   - {fileID: 1041476454}
+  _transitions: {fileID: 1385293530}
 --- !u!4 &1385293529
 Transform:
   m_ObjectHideFlags: 0
@@ -10905,6 +10907,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1385293530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385293526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19468750d62d7544bd299913de945cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextSceneIndex: 2
 --- !u!1 &1392409215
 GameObject:
   m_ObjectHideFlags: 0
@@ -13559,8 +13574,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -9.84315, y: 9.60775, z: 0}
-    m_Extent: {x: 15.3693495, y: 21.52125, z: 0}
+    m_Center: {x: -9.839, y: 9.5993, z: 0}
+    m_Extent: {x: 15.367, y: 21.5297, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageCollider: {fileID: 3642519219581288706}
-  _damage: 2
 --- !u!1 &508777919405587676
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +293,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 0
   m_Sprite: {fileID: 85134831, guid: e23aab8fe2e2419469fa7db8c4678c1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5641,7 +5640,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 2
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -10529,7 +10528,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -15549,7 +15548,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 2
   m_RenderMode: 1
   m_MeshDistribution: 0
@@ -20586,7 +20585,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 3
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -21036,7 +21035,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 947507639
-  m_SortingLayer: 11
+  m_SortingLayer: 21
   m_SortingOrder: 0
   m_Sprite: {fileID: 85134831, guid: e23aab8fe2e2419469fa7db8c4678c1d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -21518,8 +21517,11 @@ MonoBehaviour:
   _frontCheck: {fileID: 5161658174907845838}
   _health: {fileID: 7791958988161602608}
   _projectileSpawner: {fileID: 6484609997781422634}
+  _healthUI: {fileID: 0}
+  _damageCollider: {fileID: 3642519219581288706}
   _needTarget: 1
   _maxHealth: 15
+  _baseDamage: 2
   _healthToChangeStage: 
   _defaultFacingDirection: -1
   _checkCloseThreshold: 4

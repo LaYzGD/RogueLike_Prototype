@@ -16,11 +16,13 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem _hitParticles;
     [SerializeField] private ParticleSystem[] _dashParticles;
     [SerializeField] private ParticleSystem[] _jumpParticles;
+    [SerializeField] private UpgradeUI _upgradeUI;
+    [SerializeField] private RunProgressionSaving _saving;
     [Space]
     [SerializeField] private GameObject _dustParticles;
     [SerializeField] private Transform _dustParticlesSpawn;
     [Header("Data")]
-    [SerializeField] private PlayerData _playerData;
+    [SerializeField] private PlayerData _playerOriginalData;
     [SerializeField] private AudioClip _hitSound;
     [Header("Variables")]
     [SerializeField] private int _facingDirection = 1;
@@ -39,6 +41,8 @@ public class Player : MonoBehaviour
     private Checker _checker;
     private Facing _facing;
     private PlayerStateMachine _stateMachine;
+    private PlayerData _playerData;
+    private SceneTransitions _transitions;
     #endregion
 
     #region Getters
@@ -51,8 +55,12 @@ public class Player : MonoBehaviour
     public PlayerSounds Sounds => _sounds;
     #endregion
 
-    private void Awake()
+    public void Init(SceneTransitions transitions)
     {
+        _transitions = transitions;
+        _playerData = Instantiate(_playerOriginalData);
+        var dataValues = _saving.Load(_playerOriginalData);
+        _playerData.SetUp(dataValues);
         _checker = new Checker(_collider, _playerData.GroundCheckData, _rigidbody2D);
         _facing = new Facing(transform, _facingDirection);
         _stateMachine = new PlayerStateMachine(this);
@@ -65,19 +73,17 @@ public class Player : MonoBehaviour
         IdleState = new IdleState(_stateMachine,
                                   _playerData.CharacterAnimationsData.IdleAnimationParameter);
         MoveState = new MoveState(_stateMachine,
-                                  _playerData.MoveStateData,
+                                  _playerData,
                                   _facing,
                                   _playerData.CharacterAnimationsData.MoveAnimationParameter);
         LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData, _jumpParticles, CreateDustParticles);
         DashState = new PlayerDashState(_stateMachine, _playerData.DashStateData, _dashParticles, CreateDustParticles);
-        _combat.Initialize(_facing);
+        _combat.Initialize(_facing, _playerData.Damage);
         _healthUI.Init(_health);
-        _health.Init(_playerData.MaxHealth, false);
-    }
+        _health.Init(_playerData.MaxHealth, dataValues.CurrentHealth, false);
+        _upgradeUI.Init(Upgrade);
 
-    private void OnEnable()
-    {
         _stateMachine.Start(IdleState);
         _health.OnDamaged += Damaged;
         _health.OnDie += Die;
@@ -93,7 +99,30 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
+        _saving.Save(_playerOriginalData, _playerOriginalData.MaxHealth);
         print("Dead");
+    }
+
+    public void ShowUpgrade()
+    {
+        _upgradeUI.Show();
+    }
+
+    private void Upgrade(UpgradeProperty property, int boostAmount)
+    {
+        if (property == UpgradeProperty.RestoreHealth)
+        {
+            _health.Heal(boostAmount);
+            _saving.Save(_playerData, _health.CurrentHealth);
+            _transitions.ChangeScene();
+            return;
+        }
+
+        _playerData.UpdateData(property, boostAmount);
+        _health.UpdateMaxHealth(_playerData.MaxHealth);
+        _combat.UpdateDamage(_playerData.Damage);
+        _saving.Save(_playerData, _health.CurrentHealth);
+        _transitions.ChangeScene();
     }
 
     private void Update()

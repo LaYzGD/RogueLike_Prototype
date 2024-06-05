@@ -3,10 +3,12 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private DamageCollider _damageCollider;
-    [SerializeField] private int _damage;
+    
+    private int _damage;
 
-    private void Start()
+    public void Init(int damage)
     {
+        _damage = damage;
         _damageCollider.Initialize(_damage);
     }
 }

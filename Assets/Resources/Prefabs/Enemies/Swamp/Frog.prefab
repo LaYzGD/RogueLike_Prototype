@@ -10614,8 +10614,11 @@ MonoBehaviour:
   _frontCheck: {fileID: 7959635031061361303}
   _health: {fileID: 1103827709765896370}
   _projectileSpawner: {fileID: 0}
+  _healthUI: {fileID: 0}
+  _damageCollider: {fileID: 1212137476333766180}
   _needTarget: 0
   _maxHealth: 3
+  _baseDamage: 1
   _healthToChangeStage: 
   _defaultFacingDirection: -1
   _checkCloseThreshold: 2
@@ -21361,7 +21364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageCollider: {fileID: 1212137476333766180}
-  _damage: 1
 --- !u!1 &8707567360544513129
 GameObject:
   m_ObjectHideFlags: 0

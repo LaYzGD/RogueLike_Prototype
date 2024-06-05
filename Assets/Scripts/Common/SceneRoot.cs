@@ -5,8 +5,14 @@ public class SceneRoot : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Collider2D _collider;
     [SerializeField] private Wave[] _waves;
+    [SerializeField] private SceneTransitions _transitions;
 
     private int _currentWaveIndex;
+
+    private void Awake()
+    {
+        _player.Init(_transitions);
+    }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -22,7 +28,7 @@ public class SceneRoot : MonoBehaviour
     {
         if (_currentWaveIndex >= _waves.Length)
         {
-            print("Wave finished");
+            _player.ShowUpgrade();
             return;
         }
 

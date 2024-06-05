@@ -20,9 +20,11 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private Health _health;
     [SerializeField] private ProjectileSpawner _projectileSpawner;
     [SerializeField] private HealthUI _healthUI;
+    [SerializeField] private DamageCollider _damageCollider;
     [Header("Data")]
     [SerializeField] private bool _needTarget = false;
     [SerializeField] private int _maxHealth;
+    [SerializeField] private int _baseDamage = 1;
     [SerializeField] private int[] _healthToChangeStage;
     [SerializeField] private int _defaultFacingDirection;
     [SerializeField] private float _checkCloseThreshold;
@@ -78,6 +80,7 @@ public class EnemyBase : MonoBehaviour
             _healthUI.Init(_health);
         }
 
+        _damageCollider.Initialize(_baseDamage);
         _wave = wave;
         _stateMachine = new EnemyStateMachine(this);
         _facing = new Facing(_body, _defaultFacingDirection);
@@ -95,7 +98,7 @@ public class EnemyBase : MonoBehaviour
         MoveState = new EnemyActionState(_stateMachine, moveData);
         AttackState = new EnemyActionState(_stateMachine, attackData);
         DeathState = new EnemyDeathState(_stateMachine, deathData);
-        _health.Init(_maxHealth, true);
+        _health.Init(_maxHealth, _maxHealth, true);
         _health.OnDamaged += CheckStageTransition;
     }
 

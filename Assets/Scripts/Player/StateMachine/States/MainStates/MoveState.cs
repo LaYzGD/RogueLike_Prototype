@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class MoveState : GroundedState
 {
-    private MoveStateData _data;
+    private PlayerData _data;
     private string _animationParameter;
     private Facing _facing;
 
-    public MoveState(PlayerStateMachine stateMachine, MoveStateData data, Facing facing, string animationParameter) : base(stateMachine)
+    public MoveState(PlayerStateMachine stateMachine, PlayerData data, Facing facing, string animationParameter) : base(stateMachine)
     {
         _data = data;
         _facing = facing;
