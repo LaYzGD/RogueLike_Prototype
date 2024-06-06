@@ -9,4 +9,9 @@ public class SceneTransitions : MonoBehaviour
     {
         SceneManager.LoadScene(_nextSceneIndex);
     }
+
+    public void LoadNewScene(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
 }

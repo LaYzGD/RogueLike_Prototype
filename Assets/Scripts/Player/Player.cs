@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] private ParticleSystem[] _dashParticles;
     [SerializeField] private ParticleSystem[] _jumpParticles;
     [SerializeField] private UpgradeUI _upgradeUI;
+    [SerializeField] private CharacterLoseUI _characterLoseUI;
     [SerializeField] private RunProgressionSaving _saving;
     [Space]
     [SerializeField] private GameObject _dustParticles;
@@ -59,6 +60,7 @@ public class Player : MonoBehaviour
     public void Init(SceneTransitions transitions)
     {
         _transitions = transitions;
+        _characterLoseUI.Init(_transitions);
         _playerData = Instantiate(_playerOriginalData);
         var dataValues = _saving.Load(_playerOriginalData);
         _playerData.SetUp(dataValues);
@@ -104,6 +106,7 @@ public class Player : MonoBehaviour
         _saving.Save(new PlayerDataValues(_playerOriginalData.MaxHealth, _playerOriginalData.MaxHealth, _playerOriginalData.Damage, _playerOriginalData.MoveStateData.MovementSpeed));
         _stateMachine.ChangeState(_deadState);
         _combat.SetDead();
+        _characterLoseUI.ShowLoseView();
     }
 
     public void ShowUpgrade()
