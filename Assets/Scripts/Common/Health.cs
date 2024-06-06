@@ -31,6 +31,11 @@ public class Health : MonoBehaviour, IDamagable
 
     public void TakeDamage(int damage, Vector2 direction)
     {
+        if (_currentHealth <= 0)
+        {
+            return;
+        }
+
         if (damage <= 0)
         {
             return;

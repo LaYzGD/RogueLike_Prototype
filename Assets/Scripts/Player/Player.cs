@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     public LandState LandState { get; private set; }
     public JumpState JumpState { get; private set; }
     public PlayerDashState DashState { get; private set; }
+    private DeadState _deadState;
     #endregion
 
     #region Private Fields
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
         LandState = new LandState(_stateMachine);
         JumpState = new JumpState(_stateMachine, _playerData.JumpStateData, _jumpParticles, CreateDustParticles);
         DashState = new PlayerDashState(_stateMachine, _playerData.DashStateData, _dashParticles, CreateDustParticles);
+        _deadState = new DeadState(_stateMachine, _playerData.CharacterAnimationsData.DeathAnimationParameter);
         _combat.Initialize(_facing, _playerData.Damage);
         _healthUI.Init(_health);
         _health.Init(_playerData.MaxHealth, dataValues.CurrentHealth, false);
@@ -99,8 +101,9 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        _saving.Save(_playerOriginalData, _playerOriginalData.MaxHealth);
-        print("Dead");
+        _saving.Save(new PlayerDataValues(_playerOriginalData.MaxHealth, _playerOriginalData.MaxHealth, _playerOriginalData.Damage, _playerOriginalData.MoveStateData.MovementSpeed));
+        _stateMachine.ChangeState(_deadState);
+        _combat.SetDead();
     }
 
     public void ShowUpgrade()
@@ -113,7 +116,7 @@ public class Player : MonoBehaviour
         if (property == UpgradeProperty.RestoreHealth)
         {
             _health.Heal(boostAmount);
-            _saving.Save(_playerData, _health.CurrentHealth);
+            _saving.Save(new PlayerDataValues(_playerData.MaxHealth, _health.CurrentHealth, _playerData.Damage, _playerData.MovementSpeed));
             _transitions.ChangeScene();
             return;
         }
@@ -121,7 +124,7 @@ public class Player : MonoBehaviour
         _playerData.UpdateData(property, boostAmount);
         _health.UpdateMaxHealth(_playerData.MaxHealth);
         _combat.UpdateDamage(_playerData.Damage);
-        _saving.Save(_playerData, _health.CurrentHealth);
+        _saving.Save(new PlayerDataValues(_playerData.MaxHealth, _health.CurrentHealth, _playerData.Damage, _playerData.MovementSpeed));
         _transitions.ChangeScene();
     }
 

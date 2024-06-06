@@ -15,10 +15,5 @@ MonoBehaviour:
   <IdleAnimationParameter>k__BackingField: isIdle
   <MoveAnimationParameter>k__BackingField: isMove
   <InAirAnimationParameter>k__BackingField: inAir
-  <FallAnimationParameter>k__BackingField: Fall
-  <LandAnimationParameter>k__BackingField: Land
   <JumpAnimationParameter>k__BackingField: isJump
-  <AirAttack>k__BackingField: AttackInAir
-  <AttackForward>k__BackingField: AttackForward
-  <AttackDown>k__BackingField: AttackDown
-  <AttackNeutral>k__BackingField: AttackNeutral
+  <DeathAnimationParameter>k__BackingField: death

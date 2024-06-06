@@ -16,12 +16,12 @@ public class RunProgressionSaving : MonoBehaviour
         return data;
     }
 
-    public void Save(PlayerData data, int currentHealth)
+    public void Save(PlayerDataValues data)
     {
         PlayerPrefs.SetFloat(_movementSpeed, data.MovementSpeed);
         PlayerPrefs.SetInt(_damage, data.Damage);
         PlayerPrefs.SetInt(_maxHealth, data.MaxHealth);
-        PlayerPrefs.SetInt(_currentHealth, currentHealth);
+        PlayerPrefs.SetInt(_currentHealth, data.CurrentHealth);
     }
 }
 

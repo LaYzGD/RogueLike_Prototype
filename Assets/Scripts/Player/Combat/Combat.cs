@@ -8,7 +8,7 @@ public class Combat : MonoBehaviour
     [SerializeField] private Transform _verticalCheckOrigin;
     [SerializeField] private CharacterAnimator _weaponAnimator;
 
-
+    private bool _isDead = false;
     private bool _isInHorizontalCombat;
 
     public CharacterAnimator WeaponAnimator => _weaponAnimator;
@@ -37,7 +37,18 @@ public class Combat : MonoBehaviour
 
     public void UpdateCombat()
     {
+        if (_isDead)
+        {
+            return;
+        }
+
         _combatStateMachine.Update();
+    }
+
+    public void SetDead()
+    {
+        _isDead = true;
+        _combatStateMachine.ChangeState(CombatIdleState);
     }
 
     private void ToggleHorizontalCombatMode(bool value) 
